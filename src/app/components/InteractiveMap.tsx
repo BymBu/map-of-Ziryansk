@@ -1,6 +1,13 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  ImageOverlay,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { locations } from "../../../data/locations";
@@ -56,12 +63,12 @@ function CustomControls({
       {/* Переключатель режима карты */}
       <button
         onClick={() =>
-          setMapMode(mapMode === "satellite" ? "pirate" : "satellite")
+          setMapMode(mapMode === "topo-1988" ? "default" : "topo-1988")
         }
         className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 mt-4"
         title="Сменить слой"
       >
-        {mapMode === "satellite" ? "🗺️" : "🛰️"}
+        {mapMode === "default" ? "🗺️" : "🛰️"}
       </button>
     </div>
   );
@@ -69,8 +76,10 @@ function CustomControls({
 
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
-  const [mapMode, setMapMode] = useState<string | null>(null);
-  
+
+  type MapMode = 'default' | 'topo-1988';
+  const [mapMode, setMapMode] = useState<MapMode>('default');
+
   return (
     <div className="relative w-full h-screen bg-gray-900">
       <MapContainer
@@ -78,14 +87,13 @@ export default function InteractiveMap() {
         zoom={20}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
-        // --- СТРОКИ ОГРАНИЧИВАЮТ КАРТУ ---
         minZoom={15} // Нельзя отдалить камеру дальше этого значения
         maxZoom={18} // Нельзя приблизить ближе этого
         maxBounds={[
           [52.24, 107.75],
-          [52.29, 107.81],
+          [52.29, 107.83],
         ]}
-        maxBoundsViscosity={1.0}
+        maxBoundsViscosity={0.5}
         zoomControl={false}
       >
         {/* Слой спутника */}
@@ -93,6 +101,17 @@ export default function InteractiveMap() {
           attribution='&copy; <a href="https://www.esri.com">Esri</a>'
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         />
+
+        {mapMode === 'topo-1988' ?  <ImageOverlay
+          url="/maps/topo-1988.jpg"
+          bounds={[
+            [52.235, 107.73], // Юго-запад
+            [52.295, 107.84], // Северо-восток
+          ]}
+          opacity={0.9}
+          zIndex={20}
+        /> : null}
+       
 
         {/* Маркеры */}
         {locations.map((loc) => (
