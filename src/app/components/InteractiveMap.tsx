@@ -18,9 +18,59 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+function CustomControls({
+  mapMode,
+  setMapMode,
+}: {
+  mapMode: string;
+  setMapMode: (mode: string) => void;
+}) {
+  const map = useMap();
+
+  const handleZoomIn = () => map.zoomIn();
+  const handleZoomOut = () => map.zoomOut();
+
+  return (
+    <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-[1000]">
+      {/* Кнопка Зум + */}
+      <button
+        onClick={handleZoomIn}
+        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 group relative"
+        title="Приблизить"
+      >
+        <span className="text-2xl font-serif font-bold">+</span>
+        {/* Декоративный элемент "свиток" */}
+        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-[#8b5a2b] rounded-full opacity-50"></div>
+      </button>
+
+      {/* Кнопка Зум - */}
+      <button
+        onClick={handleZoomOut}
+        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 group relative"
+        title="Отдалить"
+      >
+        <span className="text-2xl font-serif font-bold">-</span>
+        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-[#8b5a2b] rounded-full opacity-50"></div>
+      </button>
+
+      {/* Переключатель режима карты */}
+      <button
+        onClick={() =>
+          setMapMode(mapMode === "satellite" ? "pirate" : "satellite")
+        }
+        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 mt-4"
+        title="Сменить слой"
+      >
+        {mapMode === "satellite" ? "🗺️" : "🛰️"}
+      </button>
+    </div>
+  );
+}
+
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
-
+  const [mapMode, setMapMode] = useState<string | null>(null);
+  
   return (
     <div className="relative w-full h-screen bg-gray-900">
       <MapContainer
@@ -28,17 +78,16 @@ export default function InteractiveMap() {
         zoom={20}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
-
         // --- СТРОКИ ОГРАНИЧИВАЮТ КАРТУ ---
         minZoom={15} // Нельзя отдалить камеру дальше этого значения
-        maxZoom={18} // Нельзя приблизить ближе этого (чтобы пиксели не мылились)
+        maxZoom={18} // Нельзя приблизить ближе этого
         maxBounds={[
-          [52.24, 107.75], // Юго-западный угол (левый нижний)
-          [52.29, 107.81], // Северо-восточный угол (правый верхний)
+          [52.24, 107.75],
+          [52.29, 107.81],
         ]}
         maxBoundsViscosity={1.0}
+        zoomControl={false}
       >
-        
         {/* Слой спутника */}
         <TileLayer
           attribution='&copy; <a href="https://www.esri.com">Esri</a>'
@@ -67,6 +116,8 @@ export default function InteractiveMap() {
             </Popup>
           </Marker>
         ))}
+
+        <CustomControls mapMode={mapMode} setMapMode={setMapMode} />
       </MapContainer>
 
       {/* GUI Overlay (Игровой интерфейс) */}
