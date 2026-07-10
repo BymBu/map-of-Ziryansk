@@ -24,3 +24,38 @@ body {
 .leaflet-control-attribution {
   display: none !important;
 }
+
+/* кастомный маркер */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.marker-pin.confident {
+  background: #8b0000; /* Темно-красный */
+  color: white;
+  border: 2px solid #e3d5b8;
+}
+
+.marker-pin.uncertain {
+  background: #d4af37; /* Золотой */
+  color: #3e2723;
+  border: 2px dashed #8b5a2b;
+}
+
+.marker-pin:hover {
+  transform: scale(1.2);
+}

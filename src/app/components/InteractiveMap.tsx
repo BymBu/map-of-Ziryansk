@@ -74,24 +74,36 @@ function CustomControls({
   );
 }
 
+function createCustomIcon(isConfident: boolean) {
+  return L.divIcon({
+    className: "custom-marker", // Класс для CSS
+    html: isConfident
+      ? `<div class="marker-pin confident">✕</div>`
+      : `<div class="marker-pin uncertain">?</div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15], // Центр иконки
+    popupAnchor: [0, -15],
+  });
+}
+
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
-  type MapMode = 'default' | 'topo-1988';
-  const [mapMode, setMapMode] = useState<MapMode>('default');
+  type MapMode = "default" | "topo-1988";
+  const [mapMode, setMapMode] = useState<MapMode>("default");
 
   return (
     <div className="relative w-full h-screen bg-gray-900">
       <MapContainer
         center={[52.264682, 107.779104]} // Центр Зырянска
-        zoom={20}
+        zoom={16}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
         minZoom={15} // Нельзя отдалить камеру дальше этого значения
         maxZoom={18} // Нельзя приблизить ближе этого
         maxBounds={[
-          [52.24, 107.75],
-          [52.29, 107.83],
+          [52.24, 107.73],
+          [52.29, 107.84],
         ]}
         maxBoundsViscosity={0.5}
         zoomControl={false}
@@ -102,25 +114,25 @@ export default function InteractiveMap() {
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         />
 
-        {mapMode === 'topo-1988' ?  <ImageOverlay
-          url="/maps/topo-1988.jpg"
-          bounds={[
-            [52.235, 107.73], // Юго-запад
-            [52.295, 107.84], // Северо-восток
-          ]}
-          opacity={0.9}
-          zIndex={20}
-        /> : null}
-       
+        {mapMode === "topo-1988" ? (
+          <ImageOverlay
+            url="/maps/topo-1988.jpg"
+            bounds={[
+              [52.235, 107.73], // Юго-запад
+              [52.295, 107.84], // Северо-восток
+            ]}
+            opacity={0.9}
+            zIndex={20}
+          />
+        ) : null}
 
         {/* Маркеры */}
         {locations.map((loc) => (
           <Marker
             key={loc.id}
             position={loc.coords}
-            eventHandlers={{
-              click: () => setActiveLocation(loc.id),
-            }}
+            icon={createCustomIcon(loc.confidence)}
+            eventHandlers={{ click: () => setActiveLocation(loc.id) }}
           >
             <Popup>
               <div className="p-2 max-w-xs">
