@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import MapWrapper from '@/app/components/MapWrapper';
 
 export default function Home() {

@@ -61,15 +61,39 @@ function CustomControls({
       </button>
 
       {/* Переключатель режима карты */}
-      <button
-        onClick={() =>
-          setMapMode(mapMode === "topo-1988" ? "default" : "topo-1988")
-        }
-        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 mt-4"
-        title="Сменить слой"
-      >
-        {mapMode === "default" ? "🗺️" : "🛰️"}
-      </button>
+      <div className="flex justify-center items-center gap-1">
+        <button
+          onClick={() => setMapMode("default")}
+          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95"
+          title="Сменить слой"
+        >
+          {mapMode === "default" ? "🗺️" : "🛰️"}
+        </button>
+
+        <button
+          onClick={() => setMapMode("topo-1988")}
+          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 "
+          title="Сменить слой"
+        >
+          {mapMode === "default" ? "🗺️" : "🛰️"}
+        </button>
+
+        <button
+          onClick={() => setMapMode("topo-1982")}
+          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 "
+          title="Сменить слой"
+        >
+          {mapMode === "default" ? "🗺️" : "🛰️"}
+        </button>
+
+        <button
+          onClick={() => setMapMode("ziryansk")}
+          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 "
+          title="Сменить слой"
+        >
+          {mapMode === "default" ? "🗺️" : "🛰️"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -89,7 +113,7 @@ function createCustomIcon(isConfident: boolean) {
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
-  type MapMode = "default" | "topo-1988";
+  type MapMode = "default" | "topo-1988" | "topo-1982" | "ziryansk";
   const [mapMode, setMapMode] = useState<MapMode>("default");
 
   return (
@@ -122,6 +146,30 @@ export default function InteractiveMap() {
               [52.295, 107.84], // Северо-восток
             ]}
             opacity={0.9}
+            zIndex={20}
+          />
+        ) : null}
+
+        {mapMode === "topo-1982" ? (
+          <ImageOverlay
+            url="/maps/topo-1982.png"
+            bounds={[
+              [52.235, 107.74], // Юго-запад
+              [52.295, 107.84], // Северо-восток
+            ]}
+            opacity={0.9}
+            zIndex={20}
+          />
+        ) : null}
+
+        {mapMode === "ziryansk" ? (
+          <ImageOverlay
+            url="/maps/ziryansk.png"
+            bounds={[
+              [52.241175, 107.707171], // Юго-западный угол (Point 4)
+              [52.283425, 107.85156], // Северо-восточный угол (Point 2)
+            ]}
+            opacity={1}
             zIndex={20}
           />
         ) : null}

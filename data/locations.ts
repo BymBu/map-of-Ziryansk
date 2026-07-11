@@ -9,14 +9,14 @@ export interface LocationPoint {
 }
 
 export const locations: LocationPoint = [
-  {
-    id: 'Zyryansk',
-    name: 'Зырянск',
-    coords: [52.264682, 107.779104], // Примерные координаты, поставишь свои
-    type: 'history',
-    description: 'Село.',
-    images: ['/zyryansk/master-1.jpg', '/zyryansk/master-2.jpg'],
-    confidence: true
-  },
+  // {
+  //   id: 'Zyryansk',
+  //   name: 'Зырянск',
+  //   coords: [52.264682, 107.779104], // Примерные координаты, поставишь свои
+  //   type: 'history',
+  //   description: 'Село.',
+  //   images: ['/zyryansk/master-1.jpg', '/zyryansk/master-2.jpg'],
+  //   confidence: true
+  // },
 
 ];
