@@ -110,6 +110,12 @@ function createCustomIcon(isConfident: boolean) {
   });
 }
 
+const InvisibleMarker = L.divIcon({
+  className: "invisible-marker",
+  iconSize: [100, 100], // Зона клика
+  iconAnchor: [20, 20],
+});
+
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
@@ -154,8 +160,8 @@ export default function InteractiveMap() {
           <ImageOverlay
             url="/maps/topo-1982.png"
             bounds={[
-              [52.235, 107.74], // Юго-запад
-              [52.295, 107.84], // Северо-восток
+              [52.235, 107.71], // Юго-запад
+              [52.295, 107.83], // Северо-восток
             ]}
             opacity={0.9}
             zIndex={20}
@@ -179,18 +185,17 @@ export default function InteractiveMap() {
           <Marker
             key={loc.id}
             position={loc.coords}
-            icon={createCustomIcon(loc.confidence)}
-            eventHandlers={{ click: () => setActiveLocation(loc.id) }}
+            icon={InvisibleMarker}
+            eventHandlers={{
+              click: () => setActiveLocation(loc.id),
+              mouseover: (e) => e.target.openPopup(), // Попап при наведении
+              mouseout: (e) => e.target.closePopup(),
+            }}
           >
             <Popup>
-              <div className="p-2 max-w-xs">
-                <h3 className="font-bold text-lg mb-1">{loc.name}</h3>
-                {!loc.confidence && (
-                  <span className="text-yellow-600 text-xs font-bold">
-                    ? НЕ УВЕРЕН
-                  </span>
-                )}
-                <p className="text-sm text-gray-700 mt-2">{loc.description}</p>
+              <div className="p-2">
+                <h3 className="font-bold">{loc.name}</h3>
+                <p className="text-sm">{loc.description}</p>
               </div>
             </Popup>
           </Marker>

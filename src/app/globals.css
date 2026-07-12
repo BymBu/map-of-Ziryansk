@@ -59,3 +59,10 @@ body {
 .marker-pin:hover {
   transform: scale(1.2);
 }
+
+.invisible-marker {
+  background: transparent !important;
+  border: none !important;
+  /* Можно добавить легкую подсветку при наведении, чтобы пользователь понимал, куда тыкать */
+}
+
