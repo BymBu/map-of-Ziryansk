@@ -63,6 +63,74 @@ body {
 .invisible-marker {
   background: transparent !important;
   border: none !important;
-  /* Можно добавить легкую подсветку при наведении, чтобы пользователь понимал, куда тыкать */
 }
 
+/* PopUp */
+/* Стили для кастомного попапа-свитка */
+.custom-scroll-popup .leaflet-popup-content-wrapper {
+  position: relative;
+  background: #f4e4bc; /* Цвет пергамента */
+  background-image: 
+    linear-gradient(to right, rgba(139, 90, 43, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 90, 43, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px; /* Эффект линованной бумаги */
+  border: 2px solid #8b5a2b;
+  border-radius: 2px; /* Почти острые углы, как у старой бумаги */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(139, 90, 43, 0.2); /* Внутренняя тень для объема */
+  color: #3e2723;
+  font-family: 'Caveat', cursive; /* Рукописный шрифт (подключи его!) */
+  padding: 0;
+  overflow: hidden;
+}
+
+.custom-scroll-popup::before {
+  content: ''; /* Обязательно пустое значение! */
+  position: absolute;
+  top: 90%; /* Подними над попапом */
+  left: 90%;
+  width: 40px;
+  height: 40px;
+  background-image: url('/loupe.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+/* Убираем стандартный "хвостик" попапа и делаем свой */
+.custom-scroll-popup .leaflet-popup-tip {
+  background: #f4e4bc;
+  border-left: 2px solid #8b5a2b;
+  border-top: 2px solid #8b5a2b;
+  box-shadow: -5px 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Декоративная "печать" сверху (опционально) */
+.custom-scroll-popup .leaflet-popup-content::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #8b5a2b,
+    #8b5a2b 5px,
+    #d4c5a9 5px,
+    #d4c5a9 10px
+  );
+  margin-bottom: 10px;
+}
+
+.custom-scroll-popup .leaflet-popup-content {
+  margin: 15px 20px;
+  line-height: 1.4;
+}
+
+.custom-scroll-popup h3 {
+  font-family: 'Marck Script', cursive; /* Другой рукописный для заголовков */
+  font-size: 1.4rem;
+  border-bottom: 1px dashed #8b5a2b;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  color: #5c3a1e;
+}

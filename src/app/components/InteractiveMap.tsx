@@ -192,10 +192,10 @@ export default function InteractiveMap() {
               mouseout: (e) => e.target.closePopup(),
             }}
           >
-            <Popup>
-              <div className="p-2">
-                <h3 className="font-bold">{loc.name}</h3>
-                <p className="text-sm">{loc.description}</p>
+            <Popup className="custom-scroll-popup">
+              <div>
+                <h3>{loc.name}</h3>
+                <p>{loc.description}</p>
               </div>
             </Popup>
           </Marker>
