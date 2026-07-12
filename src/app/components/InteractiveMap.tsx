@@ -13,6 +13,7 @@ import L from "leaflet";
 import { locations } from "../../../data/locations";
 import { useState } from "react";
 import Image from "next/image";
+import AnimatedPopupContent from "./AnimatedPopupContent";
 
 // Фикс иконок Leaflet в Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -98,18 +99,6 @@ function CustomControls({
   );
 }
 
-function createCustomIcon(isConfident: boolean) {
-  return L.divIcon({
-    className: "custom-marker", // Класс для CSS
-    html: isConfident
-      ? `<div class="marker-pin confident">✕</div>`
-      : `<div class="marker-pin uncertain">?</div>`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 15], // Центр иконки
-    popupAnchor: [0, -15],
-  });
-}
-
 const InvisibleMarker = L.divIcon({
   className: "invisible-marker",
   iconSize: [100, 100], // Зона клика
@@ -187,21 +176,33 @@ export default function InteractiveMap() {
             position={loc.coords}
             icon={InvisibleMarker}
             eventHandlers={{
-              click: () => setActiveLocation(loc.id),
-              mouseover: (e) => e.target.openPopup(), // Попап при наведении
-              mouseout: (e) => e.target.closePopup(),
+              mouseover: (e) => {
+                setActiveLocation(loc.id);
+
+                // 2. Ждем ререндер React (2 кадра), потом открываем Leaflet-DOM
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    e.target.openPopup();
+                  });
+                });
+              },
+              mouseout: (e) => {
+                e.target.closePopup();
+              },
+              click: () => {},
             }}
           >
             <Popup
               className="custom-scroll-popup"
-              autoPan={false} // ОТКЛЮЧАЕМ АВТОСДВИГ КАРТЫ
-              keepInView={false} // ОТКЛЮЧАЕМ ПОПЫТКИ УДЕРЖАТЬ ПОПАП В ЭКРАНЕ
-              closeButton={false} // Оставляем крестик для закрытия
+              autoPan={false}
+              keepInView={false}
+              closeButton={false}
             >
-              <div>
-                <h3>{loc.name}</h3>
-                <p>{loc.description}</p>
-              </div>
+              <AnimatedPopupContent
+                name={loc.name}
+                description={loc.description}
+                isVisible={activeLocation === loc.id}
+              />
             </Popup>
           </Marker>
         ))}
