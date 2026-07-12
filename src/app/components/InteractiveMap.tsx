@@ -5,7 +5,6 @@ import {
   TileLayer,
   Marker,
   Popup,
-  useMap,
   ImageOverlay,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -17,6 +16,8 @@ import AnimatedPopupContent from "./AnimatedPopupContent";
 import CustomControls from "./CustomControls";
 import LocationDetails from "./LocationDetails";
 import { InvisibleMarker } from "./utils/InvisibleMarker";
+import IntroModal from "./IntroModal";
+import WelcomeNote from "./WelcomeNote";
 
 // Фикс иконок Leaflet в Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -29,11 +30,9 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-
-
-
-
 export default function InteractiveMap() {
+  const [showIntro, setShowIntro] = useState(true);
+
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
   type MapMode = "default" | "topo-1988" | "topo-1982" | "ziryansk";
@@ -41,6 +40,10 @@ export default function InteractiveMap() {
 
   return (
     <div className="relative w-full h-screen bg-gray-900">
+      <WelcomeNote setShowIntro={setShowIntro} />
+
+      <IntroModal isVisible={showIntro} onClose={() => setShowIntro(false)} />
+
       <MapContainer
         center={[52.264682, 107.779104]} // Центр Зырянска
         zoom={16}
@@ -116,7 +119,7 @@ export default function InteractiveMap() {
               },
               mouseout: (e) => {
                 e.target.closePopup();
-              }
+              },
             }}
           >
             <Popup
@@ -134,7 +137,11 @@ export default function InteractiveMap() {
           </Marker>
         ))}
 
-        <CustomControls mapMode={mapMode} setMapMode={setMapMode} />
+        <CustomControls
+          mapMode={mapMode}
+          setMapMode={setMapMode}
+          
+        />
       </MapContainer>
 
       {/* GUI Overlay (Игровой интерфейс) */}
@@ -147,5 +154,3 @@ export default function InteractiveMap() {
     </div>
   );
 }
-
-
