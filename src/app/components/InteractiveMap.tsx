@@ -192,7 +192,12 @@ export default function InteractiveMap() {
               mouseout: (e) => e.target.closePopup(),
             }}
           >
-            <Popup className="custom-scroll-popup">
+            <Popup
+              className="custom-scroll-popup"
+              autoPan={false} // ОТКЛЮЧАЕМ АВТОСДВИГ КАРТЫ
+              keepInView={false} // ОТКЛЮЧАЕМ ПОПЫТКИ УДЕРЖАТЬ ПОПАП В ЭКРАНЕ
+              closeButton={false} // Оставляем крестик для закрытия
+            >
               <div>
                 <h3>{loc.name}</h3>
                 <p>{loc.description}</p>

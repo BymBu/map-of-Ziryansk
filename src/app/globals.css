@@ -12,6 +12,17 @@ body {
   font-family: 'Geist Sans', Arial, Helvetica, sans-serif;
 }
 
+/* Курсор - лупа */
+
+/* Глобальный курсор-лупа для всей карты */
+.leaflet-container {
+  cursor: url('/loupe-cursor.svg') 12 12, auto !important; 
+}
+
+.leaflet-interactive {
+  cursor: url('/loupe-cursor.svg') 12 12, pointer !important;
+}
+
 /* --- СТИЛИЗАЦИЯ LEAFLET КАРТЫ --- */
 
 /* Убираем стандартные белые фоны и тени */
@@ -25,40 +36,7 @@ body {
   display: none !important;
 }
 
-/* кастомный маркер */
-.custom-marker {
-  background: transparent !important;
-  border: none !important;
-}
 
-.marker-pin {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 16px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-.marker-pin.confident {
-  background: #8b0000; /* Темно-красный */
-  color: white;
-  border: 2px solid #e3d5b8;
-}
-
-.marker-pin.uncertain {
-  background: #d4af37; /* Золотой */
-  color: #3e2723;
-  border: 2px dashed #8b5a2b;
-}
-
-.marker-pin:hover {
-  transform: scale(1.2);
-}
 
 .invisible-marker {
   background: transparent !important;
@@ -69,33 +47,35 @@ body {
 /* Стили для кастомного попапа-свитка */
 .custom-scroll-popup .leaflet-popup-content-wrapper {
   position: relative;
-  background: #f4e4bc; /* Цвет пергамента */
+  background: #f4e4bc; 
   background-image: 
     linear-gradient(to right, rgba(139, 90, 43, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(139, 90, 43, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px; /* Эффект линованной бумаги */
+  background-size: 20px 20px; 
   border: 2px solid #8b5a2b;
-  border-radius: 2px; /* Почти острые углы, как у старой бумаги */
+  border-radius: 2px; 
   box-shadow: 
     0 10px 25px -5px rgba(0, 0, 0, 0.5),
-    inset 0 0 30px rgba(139, 90, 43, 0.2); /* Внутренняя тень для объема */
+    inset 0 0 30px rgba(139, 90, 43, 0.2); 
   color: #3e2723;
-  font-family: 'Caveat', cursive; /* Рукописный шрифт (подключи его!) */
+  font-family: 'Caveat', cursive; /* Рукописный шрифт */
   padding: 0;
   overflow: hidden;
+  font-size: 1rem;
 }
 
 .custom-scroll-popup::before {
-  content: ''; /* Обязательно пустое значение! */
+  content: '';
   position: absolute;
-  top: 90%; /* Подними над попапом */
-  left: 90%;
+  bottom: -15px;
+  right: -15px;  
   width: 40px;
   height: 40px;
   background-image: url('/loupe.svg');
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 10;
+  pointer-events: none; 
 }
 
 /* Убираем стандартный "хвостик" попапа и делаем свой */
@@ -106,7 +86,7 @@ body {
   box-shadow: -5px 5px 10px rgba(0,0,0,0.2);
 }
 
-/* Декоративная "печать" сверху (опционально) */
+/* Декоративная "печать" сверху */
 .custom-scroll-popup .leaflet-popup-content::before {
   content: '';
   display: block;
@@ -128,7 +108,7 @@ body {
 
 .custom-scroll-popup h3 {
   font-family: 'Marck Script', cursive; /* Другой рукописный для заголовков */
-  font-size: 1.4rem;
+  font-size: 2rem;
   border-bottom: 1px dashed #8b5a2b;
   padding-bottom: 5px;
   margin-bottom: 8px;
