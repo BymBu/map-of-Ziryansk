@@ -15,6 +15,8 @@ import { useState } from "react";
 import Image from "next/image";
 import AnimatedPopupContent from "./AnimatedPopupContent";
 import CustomControls from "./CustomControls";
+import LocationDetails from "./LocationDetails";
+import { InvisibleMarker } from "./utils/InvisibleMarker";
 
 // Фикс иконок Leaflet в Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -29,11 +31,7 @@ L.Icon.Default.mergeOptions({
 
 
 
-const InvisibleMarker = L.divIcon({
-  className: "invisible-marker",
-  iconSize: [100, 100], // Зона клика
-  iconAnchor: [20, 20],
-});
+
 
 export default function InteractiveMap() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
@@ -118,8 +116,7 @@ export default function InteractiveMap() {
               },
               mouseout: (e) => {
                 e.target.closePopup();
-              },
-              click: () => {},
+              }
             }}
           >
             <Popup
@@ -151,46 +148,4 @@ export default function InteractiveMap() {
   );
 }
 
-function LocationDetails({
-  location,
-  onClose,
-}: {
-  location: any;
-  onClose: () => void;
-}) {
-  return (
-    <div className="absolute top-4 right-4 w-80 bg-black/80 backdrop-blur-md text-white p-4 rounded-xl border border-gray-700 shadow-2xl z-[1000] animate-in fade-in slide-in-from-right-10">
-      <button
-        onClick={onClose}
-        className="absolute top-2 right-2 text-gray-400 hover:text-white"
-      >
-        ✕
-      </button>
-      <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
-        {location.name}
-        {!location.confidence && (
-          <span className="text-yellow-500 text-lg">?</span>
-        )}
-      </h2>
-      <p className="text-sm text-gray-300 mb-4 leading-relaxed">
-        {location.description}
-      </p>
 
-      {location.images.length > 0 && (
-        <div className="grid grid-cols-2 gap-2">
-          {location.images.map((img: string, idx: number) => (
-            <div
-              key={idx}
-              className="relative h-24 rounded overflow-hidden bg-gray-800"
-            >
-              {/* Тут будет Image, но пока заглушка */}
-              <div className="w-full h-full bg-gray-700 flex items-center justify-center text-xs">
-                Photo {idx + 1}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}

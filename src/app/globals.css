@@ -114,3 +114,27 @@ body {
   margin-bottom: 8px;
   color: #5c3a1e;
 }
+
+
+/* Псевдоэлемент для детальной локации */
+.locationDetail::before {
+  content: '';
+  position: absolute;
+  
+  width: 40px; 
+  height: 40px;
+  
+  /* ПОЗИЦИОНИРОВАНИЕ */
+  bottom: -2px; /* Отступ снизу */
+  right: 0px;  /* Отступ справа */
+  
+  /* ИЗОБРАЖЕНИЕ */
+  background-image: url('/feather.svg');
+  background-size: contain; /* Чтобы иконка вписалась в 24x24 */
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  /* ПРОПУСКАЕМ КЛИКИ ЧЕРЕЗ НЕГО */
+  pointer-events: none;
+  z-index: 50;
+}
