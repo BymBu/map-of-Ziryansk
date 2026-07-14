@@ -18,6 +18,7 @@ import LocationDetails from "./LocationDetails";
 import { InvisibleMarker } from "./utils/InvisibleMarker";
 import IntroModal from "./IntroModal";
 import WelcomeNote from "./WelcomeNote";
+import { usePaperSound } from "../hooks/usePaperSound";
 
 // Фикс иконок Leaflet в Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -32,73 +33,37 @@ L.Icon.Default.mergeOptions({
 
 export default function InteractiveMap() {
   const [showIntro, setShowIntro] = useState(true);
-
-  const [activeLocation, setActiveLocation] = useState<string | null>(null);
-
+  
+  // ✅ Два отдельных состояния
+  const [hoveredLocation, setHoveredLocation] = useState<string | null>(null); // Для попапа
+  const [activeLocation, setActiveLocation] = useState<string | null>(null);   // Для LocationDetails
+  
   type MapMode = "default" | "topo-1988" | "topo-1982" | "ziryansk";
   const [mapMode, setMapMode] = useState<MapMode>("ziryansk");
+  
+  const playPaperSound = usePaperSound();
 
   return (
     <div className="relative w-full h-screen bg-gray-900">
       <WelcomeNote setShowIntro={setShowIntro} />
-
       <IntroModal isVisible={showIntro} onClose={() => setShowIntro(false)} />
 
       <MapContainer
-        center={[52.264682, 107.779104]} // Центр Зырянска
+        center={[52.264682, 107.779104]}
         zoom={16}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
-        minZoom={15} // Нельзя отдалить камеру дальше этого значения
-        maxZoom={18} // Нельзя приблизить ближе этого
-        maxBounds={[
-          [52.24, 107.73],
-          [52.29, 107.84],
-        ]}
+        minZoom={15}
+        maxZoom={18}
+        maxBounds={[[52.24, 107.73], [52.29, 107.84]]}
         maxBoundsViscosity={0.5}
         zoomControl={false}
       >
-        {/* Слой спутника */}
-        <TileLayer
-          attribution='&copy; <a href="https://www.esri.com">Esri</a>'
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-        />
-
-        {mapMode === "topo-1988" ? (
-          <ImageOverlay
-            url="/maps/topo-1988.jpg"
-            bounds={[
-              [52.235, 107.73], // Юго-запад
-              [52.295, 107.84], // Северо-восток
-            ]}
-            opacity={0.9}
-            zIndex={20}
-          />
-        ) : null}
-
-        {mapMode === "topo-1982" ? (
-          <ImageOverlay
-            url="/maps/topo-1982.png"
-            bounds={[
-              [52.235, 107.71], // Юго-запад
-              [52.295, 107.83], // Северо-восток
-            ]}
-            opacity={0.9}
-            zIndex={20}
-          />
-        ) : null}
-
-        {mapMode === "ziryansk" ? (
-          <ImageOverlay
-            url="/maps/ziryansk.png"
-            bounds={[
-              [52.241175, 107.707171], // Юго-западный угол (Point 4)
-              [52.283425, 107.85156], // Северо-восточный угол (Point 2)
-            ]}
-            opacity={1}
-            zIndex={20}
-          />
-        ) : null}
+        <TileLayer attribution='&copy; <a href="https://www.esri.com">Esri</a>' url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+        
+        {mapMode === "topo-1988" && <ImageOverlay url="/maps/topo-1988.jpg" bounds={[[52.235, 107.73], [52.295, 107.84]]} opacity={0.9} zIndex={20} />}
+        {mapMode === "topo-1982" && <ImageOverlay url="/maps/topo-1982.png" bounds={[[52.235, 107.71], [52.295, 107.83]]} opacity={0.9} zIndex={20} />}
+        {mapMode === "ziryansk" && <ImageOverlay url="/maps/ziryansk.png" bounds={[[52.241175, 107.707171], [52.283425, 107.85156]]} opacity={1} zIndex={20} />}
 
         {/* Маркеры */}
         {locations.map((loc) => (
@@ -108,43 +73,39 @@ export default function InteractiveMap() {
             icon={InvisibleMarker}
             eventHandlers={{
               mouseover: (e) => {
-                setActiveLocation(loc.id);
-
-                // 2. Ждем ререндер React (2 кадра), потом открываем Leaflet-DOM
+                setHoveredLocation(loc.id);
+                
                 requestAnimationFrame(() => {
                   requestAnimationFrame(() => {
                     e.target.openPopup();
+                    playPaperSound();
                   });
                 });
               },
               mouseout: (e) => {
+                setHoveredLocation(null);
                 e.target.closePopup();
               },
+              click: () => {
+                setActiveLocation(loc.id); 
+              }
             }}
           >
-            <Popup
-              className="custom-scroll-popup"
-              autoPan={false}
-              keepInView={false}
-              closeButton={false}
-            >
+            <Popup className="custom-scroll-popup" autoPan={false} keepInView={false} closeButton={false}>
               <AnimatedPopupContent
                 name={loc.name}
                 description={loc.description}
-                isVisible={activeLocation === loc.id}
+                isVisible={hoveredLocation === loc.id}
+                hasPhotos={!!loc.images?.length}
               />
             </Popup>
           </Marker>
         ))}
 
-        <CustomControls
-          mapMode={mapMode}
-          setMapMode={setMapMode}
-          
-        />
+        <CustomControls mapMode={mapMode} setMapMode={setMapMode} />
       </MapContainer>
 
-      {/* GUI Overlay (Игровой интерфейс) */}
+      {/* GUI Overlay - открывается ТОЛЬКО по клику */}
       {activeLocation && (
         <LocationDetails
           location={locations.find((l) => l.id === activeLocation)!}
