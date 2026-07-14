@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import PhotoModal from "./PhotoModal";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function LocationDetails({
   location,
@@ -13,22 +14,46 @@ export default function LocationDetails({
 
   return (
     <>
-      <div
+      {/* Затемнение фона */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Контент — адаптивный */}
+      <motion.div
+        initial={{ opacity: 0, y: "100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "100%" }}
+        transition={{
+          type: "spring",
+          damping: 30,
+          stiffness: 300,
+          mass: 0.8,
+        }}
         className={`
-          locationDetail z-[1000] bg-[#1a1612] text-[#e3d5b8] shadow-2xl overflow-hidden group p-5
+          fixed z-[9999] bg-[#1a1612] text-[#e3d5b8] shadow-2xl p-5 border-2 border-[#8b5a2b]
           
-          /* МОБИЛЬНЫЙ: шторка ПРИБИТАЯ К НИЗУ */
-          fixed inset-x-0 bottom-0 w-full max-h-[70vh] rounded-t-2xl border-t-2 border-[#8b5a2b]
+          /* МОБИЛЬНЫЙ: шторка снизу */
+          inset-x-0 bottom-0 max-h-[70vh] rounded-t-2xl border-t-2
           
           /* ДЕСКТОП: карточка справа сверху */
-          md:absolute md:top-4 md:right-4 md:w-80 md:max-h-none md:rounded-sm 
-          md:border md:border-[#3e2723] md:inset-auto md:bottom-auto
+          md:inset-auto md:top-4 md:right-4 md:w-80 md:max-h-[80vh] md:rounded-sm md:border
+          
+          /* Кастомный скроллбар + отключаем горизонтальный скролл */
+          overflow-y-auto overflow-x-hidden
+          scrollbar-thin scrollbar-track-[#0f0c09] scrollbar-thumb-[#8b5a2b] scrollbar-thumb-rounded-full
+          hover:scrollbar-thumb-[#d4af37]
         `}
       >
-        {/* Ручка шторки (только мобилка)
-        <div className="md:hidden flex justify-center pt-2 pb-3">
+        {/* Ручка шторки (только на мобилке) */}
+        <div className="flex justify-center pt-2 pb-3 md:hidden sticky top-0 bg-[#1a1612]/95 backdrop-blur-sm z-20">
           <div className="w-12 h-1.5 bg-[#8b5a2b]/50 rounded-full" />
-        </div> */}
+        </div>
 
         {/* Фоновый узор (Роза ветров) */}
         <div className="absolute -right-10 -bottom-10 w-40 h-40 opacity-[0.03] pointer-events-none">
@@ -45,13 +70,34 @@ export default function LocationDetails({
 
         {/* Заголовок с пером */}
         <div className="flex items-start justify-between mb-4 relative z-10">
-          <div className="flex items-center gap-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#d4af37]">
-              <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-[#d4af37] flex-shrink-0"
+            >
+              <path d="M12 19l7-7 3 3-7 7-3-3z" />
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+              <path d="M2 2l7.586 7.586" />
+              <circle cx="11" cy="11" r="2" />
             </svg>
-            <h2 className="text-xl font-serif font-bold leading-tight text-[#f4e4bc]">{location.name}</h2>
+            <h2 className="text-xl font-serif font-bold leading-tight text-[#f4e4bc] ">
+              {location.name}
+            </h2>
           </div>
-          <button onClick={onClose} className="w-6 h-6 flex items-center justify-center rounded-full border border-[#5c3a1e] text-[#8b5a2b] hover:bg-[#3e2723] hover:text-[#f4e4bc] transition-colors" title="Закрыть dossier">✕</button>
+          <button
+            onClick={onClose}
+            className="w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full border border-[#5c3a1e] text-[#8b5a2b] hover:bg-[#3e2723] hover:text-[#f4e4bc] transition-colors"
+            title="Закрыть dossier"
+          >
+            ✕
+          </button>
         </div>
 
         {/* Индикатор уверенности */}
@@ -62,33 +108,52 @@ export default function LocationDetails({
           </div>
         )}
 
-        {/* Описание*/}
-        <p className="text-[15px] text-[#c4b5a0] leading-relaxed mb-5 font-light relative z-10">
+        {/* Описание */}
+        <p className="md:text-[16px] text-[15px] text-[#c4b5a0] leading-relaxed mb-5 font-light relative z-10 break-words">
           {location.description}
         </p>
 
         {/* Галерея артефактов */}
         {location.images?.length > 0 ? (
-          <div className="space-y-3 relative z-10">
+          <div className="space-y-3 relative z-10 pb-4">
             <div className="text-[12px] uppercase tracking-widest text-[#5c3a1e] font-bold border-t border-[#3e2723]/40 pt-3 mt-4">
               Архивные материалы
             </div>
 
             <div className="grid md:grid-cols-3 grid-cols-5 gap-2">
               {location.images.map((img: string, idx: number) => (
-                <button key={idx} onClick={() => setActivePhotoIndex(idx)} className="relative aspect-square rounded-sm overflow-hidden bg-[#0f0c09] border border-[#3e2723] hover:border-[#8b5a2b] transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50" aria-label={`Открыть фото ${idx + 1}`}>
-                  <Image src={img} alt={`Архивное фото ${idx + 1}: ${location.name}`} fill sizes="(max-width: 768px) 40vw, 120px" className="object-cover transition-transform duration-500 hover:scale-110" loading="lazy" />
+                <button
+                  key={idx}
+                  onClick={() => setActivePhotoIndex(idx)}
+                  className="relative aspect-square rounded-sm overflow-hidden bg-[#0f0c09] border border-[#3e2723] hover:border-[#8b5a2b] transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50"
+                  aria-label={`Открыть фото ${idx + 1}`}
+                >
+                  <Image
+                    src={img}
+                    alt={`Архивное фото ${idx + 1}: ${location.name}`}
+                    fill
+                    sizes="(max-width: 768px) 40vw, 120px"
+                    className="object-cover transition-transform duration-500 hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent pointer-events-none" />
                 </button>
               ))}
             </div>
           </div>
         ) : null}
-      </div>
+      </motion.div>
 
-      {activePhotoIndex !== null && location.images?.[activePhotoIndex] && (
-        <PhotoModal photo={location.images[activePhotoIndex]} alt={`Архивное фото ${activePhotoIndex + 1}: ${location.name}`} onClose={() => setActivePhotoIndex(null)} />
-      )}
+      {/* Фото-модалка */}
+      <AnimatePresence>
+        {activePhotoIndex !== null && location.images?.[activePhotoIndex] && (
+          <PhotoModal
+            photo={location.images[activePhotoIndex]}
+            alt={`Архивное фото ${activePhotoIndex + 1}: ${location.name}`}
+            onClose={() => setActivePhotoIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

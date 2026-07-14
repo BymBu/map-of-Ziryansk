@@ -12,7 +12,7 @@ export default function WelcomeNote({ setShowIntro }: { setShowIntro: () => void
             <p>️<span className="font-bold text-[#5c3a1e]">Подведите мышку</span> к значкам — появится подсказка. Нажмите ЛКМ для подробного описания и изображений.</p>
             <p>Кнопки <span className="font-bold text-[#5c3a1e]">«1988», «1982»</span> показывают старые карты.</p>
             <p className="text-[15px] opacity-80 pt-2 border-t border-[#8b5a2b]/20">
-              ⚠️ Некоторые метки маленькие. Приближайте карту колесиком мыши.
+              ⚠️ Некоторые метки маленькие а также за границей села. Приближайте карту колесиком мыши.
             </p>
           </div>
           <div className="mt-4 flex justify-end opacity-40">
