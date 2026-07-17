@@ -12,6 +12,7 @@ export interface LocationPoint {
     | "main";
   description: string;
   images: string[]; // Пути к фото в public
+  panoramaSrc?: string;
   confidence?: boolean; // true - уверен, false - вопросительный знак
 }
 
