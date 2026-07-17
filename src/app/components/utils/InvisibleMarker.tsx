@@ -3,6 +3,6 @@ import L from "leaflet";
 
 export const InvisibleMarker = L.divIcon({
   className: "invisible-marker",
-  iconSize: [150, 150], // Зона клика
-  iconAnchor: [40, 40],
+  iconSize: [48, 48], 
+  iconAnchor: [24, 24], 
 });
