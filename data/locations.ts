@@ -1,7 +1,7 @@
 export interface LocationPoint {
   id: string;
   name: string;
-  coords: [number, number]; // [lat, lng]
+  coords: [number, number];
   type:
     | "history"
     | "mystery"
@@ -10,10 +10,10 @@ export interface LocationPoint {
     | "current"
     | "panorama"
     | "main";
-  description: string;
-  images: string[]; // Пути к фото в public
-  panoramaSrc?: string;
-  confidence?: boolean; // true - уверен, false - вопросительный знак
+  description?: string;
+  images?: string[]; 
+  panoramaSrc?: string; 
+  confidence?: boolean;
 }
 
 export const locations: LocationPoint[] = [
