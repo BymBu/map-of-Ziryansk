@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🗺️ Map of Zyryansk: Интерактивная карта памяти
 
-## Getting Started
+> **Цифровая реконструкция истории села Зырянск (Прибайкальский район, Бурятия).**  
+> Проект создан летом 2026 года с целью сохранения исчезающих объектов культурного и исторического наследия: руин ГЭС, старых ферм, исчезнувших деревень и часовен.
 
-First, run the development server:
+🔗 **Live:** [map-of-ziryansk.vercel.app](https://map-of-ziryansk.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 О проекте
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Зырянск — село с богатой историей, уходящей корнями в XVII век. Со временем многие значимые места (деревни Утаты и Ловцова, Зырянская ГЭС, колхозные фермы) были заброшены или разрушены. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Этот проект объединяет современные веб-технологии и краеведение, позволяя пользователям:
+*   Исследовать село через призму времени, накладывая **топографические карты 1980-х годов** на современный спутниковый снимок.
+*   Погружаться в атмосферу мест через интерактивные **панорамы 360°**.
+*   Изучать архивные документы, фотографии старожилов и художественные полотна местных мастеров.
 
-## Learn More
+## 🛠 Технологический стек
 
-To learn more about Next.js, take a look at the following resources:
+Проект разработан с использованием современного стека для обеспечения высокой производительности и отзывчивого UX:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend & Core
+*   **Next.js 16** — фреймворк для серверного рендеринга и оптимизации.
+*   **React 19** — библиотека для построения пользовательского интерфейса.
+*   **TypeScript** — строгая типизация для надежности кода.
+*   **Tailwind CSS** — утилитарный CSS-фреймворк для стилизации.
+*   **Framer Motion** — библиотека для плавных анимаций и переходов.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Cartography & Visualization
+*   **Leaflet** — легковесная библиотека для интерактивных карт.
+*   **React-Leaflet** — React-компоненты для Leaflet.
+*   **Pannellum** — движок для просмотра панорам 360° на базе WebGL.
 
-## Deploy on Vercel
+### Media & Infrastructure
+*   **Cloudinary** — облачное хранилище для оптимизации и быстрой доставки изображений (WebP, авто-форматы).
+*   **Vercel** — платформа для хостинга и CI/CD деплоя.
+*   **CounterAPI** — легковесное решение для подсчета просмотров без бэкенда.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Ключевые особенности
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   **Мультислойность:** Переключение между спутником Esri, кастомной картой села и историческими топокартами (1982, 1988 гг.).
+*   **Интерактивные панорамы:** Просмотр руин ГЭС и других локаций с эффектом присутствия.
+*   **Адаптивный UX:** Полная поддержка мобильных устройств (iOS/Android) и десктопов.
+*   **Оптимизация:** Использование Cloudinary для быстрой загрузки тяжелых картографических слоев и панорам даже при слабом интернете.
+*   **Архивный раздел:** Встроенная галерея с историческими документами, трудовыми книжками и картинами художника С.И. Пушкарёва.
+
+## 🚀 Локальный запуск
+
+1.  Клонируйте репозиторий:
+    ```bash
+    git clone https://github.com/BymBu/map-of-Ziryansk.git
+    cd map-of-Ziryansk
+    ```
+
+2.  Установите зависимости:
+    ```bash
+    npm install
+    ```
+
+3.  Запустите сервер разработки:
+    ```bash
+    npm run dev
+    ```
+
+4.  Откройте [http://localhost:3000](http://localhost:3000) в браузере.
+
+## 📂 Структура данных
+
+Данные о локациях хранятся в `data/locations.ts`. Каждая точка включает координаты, описание, массив изображений и ссылки на панорамы.
+
+## 🤝 Вклад в проект
+
+Если вы житель Зырянска или Прибайкальского района и хотите дополнить карту новыми фотографиями или историческими фактами, пожалуйста, создайте **Issue** или напишите мне в Telegram: [@slepta](https://t.me/slepta).
+
+## 📄 Лицензия
+
+Код проекта распространяется под лицензией **MIT**. 
+Фотографии и исторические материалы являются собственностью авторов и используются в образовательных целях.
+
+---
+*Created with ❤️ by Vyacheslav Erofeev, Summer 2026.*
