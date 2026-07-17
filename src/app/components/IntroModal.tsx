@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { usePaperSound } from "../hooks/usePaperSound";
 import ViewCounter from "./ViewCounter";
+import CloudinaryImage from "./CloudinaryImage";
 
 interface IntroModalProps {
   isVisible: boolean;
@@ -63,7 +63,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
             <div className="absolute inset-x-0 top-0 bottom-[72px] overflow-y-auto scrollbar-vintage p-6 md:p-10">
               <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-                {/* ЛЕВАЯ КОЛОНКА */}
+                {/* ЛЕВАЯ КОЛОНКА: Визитка */}
                 <div className="w-full md:w-1/3 shrink-0">
                   <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#4a2f18] mb-1 tracking-wide">
                     Зырянск
@@ -72,12 +72,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     Карта памяти · 2026
                   </p>
 
+                  {/* Аватар автора */}
                   <div className="w-32 h-32 md:w-40 md:h-40 mx-auto md:mx-0 rounded-full border-4 border-[#8b5a2b] overflow-hidden shadow-lg mb-6 bg-[#d4c5a9] relative group">
-                    <Image
-                      src="/me.png"
+                    <CloudinaryImage
+                      src="/me.png" // Локальная картинка, CloudinaryImage обработает её корректно или можно оставить Image если она в public
                       alt="Вячеслав"
-                      fill
-                      sizes="auto"
+                      width={320}
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-full pointer-events-none" />
@@ -94,7 +94,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <p className="font-cusaiv text-base md:text-lg italic text-[#5c3a1e] leading-snug">
                       для лучшего опыта используйте компьютер
                     </p>
-                    
+
                     <div className="pt-4 border-t border-[#8b5a2b]/30 text-sm md:text-base text-[#3e2723]">
                       <p className="mb-2 font-bold uppercase tracking-wider text-[#5c3a1e] text-[14px] md:text-xs">
                         Связь с автором карты
@@ -124,7 +124,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         </p>
                       </div>
                     </div>
-                      <ViewCounter />
+                    <ViewCounter />
                   </div>
                 </div>
 
@@ -156,19 +156,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     {/* ГИМН ЗЫРЯНСКА */}
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "3 / 4" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/gimn-zyryanska.jpg"
-                          alt="Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-contain rounded"
-                          unoptimized
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/gimn-zyryanska.jpg"
+                        alt="Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова"
+                        width={800}
+                        className="w-full h-auto object-contain rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова
                       </p>
@@ -191,18 +184,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     {/* ФОТО: СОБРАНИЕ КОЛХОЗА */}
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "4 / 3" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-1.jpg"
-                          alt="Собрание колхоза в Зырянске. 1930-е годы. В первом ряду — Баталов Иван Никанорович"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover rounded"
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-1.jpg"
+                        alt="Собрание колхоза в Зырянске. 1930-е годы. В первом ряду — Баталов Иван Никанорович"
+                        width={800}
+                        className="w-full h-auto object-cover rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Собрание колхоза в Зырянске. В первом ряду — Баталов
                         Иван Никанорович
@@ -220,73 +207,45 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     {/* КАРТИНЫ ХУДОЖНИКА ПУШКАРЁВА */}
                     <div className="my-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      {[
+                        {
+                          src: "pushkarev-zyryansk.jpg",
+                          alt: "С. Пушкарёв. Зырянск, 1975 г.",
+                        },
+                        {
+                          src: "ziryansk-3.jpg",
+                          alt: "С. Пушкарёв. Старая мельница, 1938 г.",
+                        },
+                        {
+                          src: "ges-6.jpg",
+                          alt: "С. Пушкарёв. Память детства, май 1995 г.",
+                        },
+                      ].map((img, i) => (
                         <div
-                          className="relative w-full"
-                          style={{ aspectRatio: "4 / 3" }}
+                          key={i}
+                          className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2"
                         >
-                          <Image
-                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/pushkarev-zyryansk.jpg"
-                            alt="Картина Семёна Пушкарёва «Зырянск», 1975 г."
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover rounded"
+                          <CloudinaryImage
+                            src={`https://res.cloudinary.com/xv01jkbw/image/upload/photos/${img.src}`}
+                            alt={img.alt}
+                            width={400}
+                            className="w-full h-auto object-cover rounded"
                           />
+                          <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                            {img.alt}
+                          </p>
                         </div>
-                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
-                          С. Пушкарёв. Зырянск, 1975 г.
-                        </p>
-                      </div>
-                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                        <div
-                          className="relative w-full"
-                          style={{ aspectRatio: "4 / 3" }}
-                        >
-                          <Image
-                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-3.jpg"
-                            alt="Картина Семёна Пушкарёва «Старая мельница», 1938 г."
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover rounded"
-                          />
-                        </div>
-                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
-                          С. Пушкарёв. Старая мельница, 1938 г.
-                        </p>
-                      </div>
-                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                        <div
-                          className="relative w-full"
-                          style={{ aspectRatio: "4 / 3" }}
-                        >
-                          <Image
-                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ges-6.jpg"
-                            alt="Картина Семёна Пушкарёва «Память детства», 1995 г."
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover rounded"
-                          />
-                        </div>
-                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
-                          С. Пушкарёв. Память детства, май 1995 г.
-                        </p>
-                      </div>
+                      ))}
                     </div>
 
                     {/* ФОТО ХУДОЖНИКА */}
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2 max-w-sm mx-auto">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "4 / 3" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/pushkarev-photo.jpg"
-                          alt="Семён Иванович Пушкарёв — художник-любитель из Зырянска"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 30vw"
-                          className="object-cover rounded"
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/pushkarev-photo.jpg"
+                        alt="Семён Иванович Пушкарёв — художник-любитель из Зырянска"
+                        width={500}
+                        className="w-full h-auto object-cover rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Семён Иванович Пушкарёв, художник-любитель (на фото
                         справа)
@@ -305,18 +264,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     {/* ПРАВЛЕНИЕ КОЛХОЗА */}
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "4 / 3" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-2.jpg"
-                          alt="Правление колхоза в Зырянске. 1930-е годы"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover rounded"
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-2.jpg"
+                        alt="Правление колхоза в Зырянске. 1930-е годы"
+                        width={800}
+                        className="w-full h-auto object-cover rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Правление колхоза в Зырянске. 1930-е годы
                       </p>
@@ -333,35 +286,23 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
-                          <div
-                            className="relative w-full"
-                            style={{ aspectRatio: "4 / 3" }}
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/trud-book.jpg"
-                              alt="Трудовая книжка работницы совхоза «Зырянский»"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover rounded"
-                            />
-                          </div>
+                          <CloudinaryImage
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/trud-book.jpg"
+                            alt="Трудовая книжка работницы совхоза «Зырянский»"
+                            width={400}
+                            className="w-full h-auto object-cover rounded"
+                          />
                           <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
                             Трудовая книжка — записи о работе в совхозе
                           </p>
                         </div>
                         <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
-                          <div
-                            className="relative w-full"
-                            style={{ aspectRatio: "4 / 3" }}
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/salary-1.jpg"
-                              alt="Поощрения и достижения работников совхоза"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover rounded"
-                            />
-                          </div>
+                          <CloudinaryImage
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/salary-1.jpg"
+                            alt="Поощрения и достижения работников совхоза"
+                            width={400}
+                            className="w-full h-auto object-cover rounded"
+                          />
                           <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
                             Поощрения работников за труд на фермах
                           </p>
@@ -376,35 +317,23 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
-                          <div
-                            className="relative w-full"
-                            style={{ aspectRatio: "3 / 4" }}
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-1.jpg"
-                              alt="Сберегательная книжка Сбербанка СССР"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover rounded"
-                            />
-                          </div>
+                          <CloudinaryImage
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-1.jpg"
+                            alt="Сберегательная книжка Сбербанка СССР"
+                            width={400}
+                            className="w-full h-auto object-cover rounded"
+                          />
                           <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
                             Сберегательная книжка Сбербанка
                           </p>
                         </div>
                         <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
-                          <div
-                            className="relative w-full"
-                            style={{ aspectRatio: "3 / 4" }}
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-2.jpg"
-                              alt="Сберегательная книжка СССР"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover rounded"
-                            />
-                          </div>
+                          <CloudinaryImage
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-2.jpg"
+                            alt="Сберегательная книжка СССР"
+                            width={400}
+                            className="w-full h-auto object-cover rounded"
+                          />
                           <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
                             Сберегательная книжка СССР
                           </p>
@@ -417,18 +346,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     </div>
 
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "4 / 3" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/order.jpg"
-                          alt="Ордер на выдачу квартиры рабочему совхоза «Зырянский»"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover rounded"
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/order.jpg"
+                        alt="Ордер на выдачу квартиры рабочему совхоза «Зырянский»"
+                        width={800}
+                        className="w-full h-auto object-cover rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Ордер на выдачу квартиры рабочему совхоза. Жильё давали
                         тем, кто работал
@@ -437,18 +360,12 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     {/* РУКОПИСНАЯ КАРТА СОВХОЗА */}
                     <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
-                      <div
-                        className="relative w-full"
-                        style={{ aspectRatio: "4 / 3" }}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/map-sovxoz.jpg"
-                          alt="Рукописная карта совхоза «Зырянский», нарисована от руки"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-contain rounded"
-                        />
-                      </div>
+                      <CloudinaryImage
+                        src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/map-sovxoz.jpg"
+                        alt="Рукописная карта совхоза «Зырянский», нарисована от руки"
+                        width={800}
+                        className="w-full h-auto object-contain rounded"
+                      />
                       <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
                         Карта совхоза «Зырянский», нарисованная от руки. На ней
                         обозначены поля, фермы и границы

@@ -9,7 +9,7 @@ export default function ViewCounter() {
   useEffect(() => {
     let mounted = true;
 
-    fetch("https://api.counterapi.dev/v1/zyryansk-map-2026/views/up")
+    fetch("https://api.counterapi.dev/v1/zyryansk-mapp-2026/views/up")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
