@@ -58,7 +58,7 @@ body {
     0 10px 25px -5px rgba(0, 0, 0, 0.5),
     inset 0 0 30px rgba(139, 90, 43, 0.2); 
   color: #3e2723;
-  font-family: 'Caveat', cursive; /* Рукописный шрифт */
+  
   padding: 0;
   overflow: hidden;
   font-size: 1rem;

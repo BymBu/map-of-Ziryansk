@@ -91,7 +91,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                       Остатки ГЭС, кости у дороги, землянки в Утатах, деревню
                       Ловцова, и прочие следы истории, которые сохранила земля.
                     </p>
-                    <p className="font-cusaiv text-base md:text-lg italic text-[#5c3a1e] leading-snug">
+                    <p className="text-base md:text-lg italic text-[#5c3a1e] leading-snug">
                       для лучшего опыта используйте компьютер
                     </p>
 
@@ -134,7 +134,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     История села
                   </h2>
 
-                  <div className="space-y-5 text-[#2c1e12] leading-[1.7] font-light text-base md:text-lg lg:text-xl font-cusaiv">
+                  <div className="space-y-5 text-[#2c1e12] leading-[1.7] font-light text-base md:text-lg lg:text-xl ">
                     <p>
                       Зырянск — село в Прибайкальском районе Бурятии. Первое
                       письменное упоминание — 1735 год, когда Г. Ф. Миллер

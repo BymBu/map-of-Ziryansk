@@ -12,7 +12,7 @@ export default function CustomControls({
   const handleZoomOut = () => map.zoomOut();
 
   return (
-    <div className="absolute bottom-[1rem] right-5 flex flex-col gap-4 z-[1000] md:bottom-8">
+    <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom))] right-5 flex flex-col gap-4 z-[1000]">
            {/* Кнопка Зум + */}
       <button
         onClick={handleZoomIn}

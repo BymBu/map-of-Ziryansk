@@ -42,7 +42,7 @@ export default function InteractiveMap() {
       <MapContainer
         center={[52.264682, 107.779104]}
         zoom={16}
-        style={{ height: "100%", width: "100%" }}
+         style={{ height: "100%", width: "100%", willChange: "transform" }}
         className="z-0"
         minZoom={15}
         maxZoom={18}
@@ -82,7 +82,7 @@ export default function InteractiveMap() {
         )}
         {mapMode === "ziryansk" && (
           <ImageOverlay
-            url="/maps/ziryansk.png"
+            url="/maps/ziryansk.webp"
             bounds={[
               [52.241175, 107.707171],
               [52.283425, 107.85156],
