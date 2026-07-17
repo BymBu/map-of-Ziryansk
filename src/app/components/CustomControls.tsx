@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export default function CustomControls({
   setMapMode,
+  mapMode,
 }: {
   mapMode: string;
   setMapMode: Dispatch<SetStateAction<string>>;
@@ -14,73 +15,103 @@ export default function CustomControls({
   const handleZoomIn = () => map.zoomIn();
   const handleZoomOut = () => map.zoomOut();
 
+  // Вспомогательная функция для классов кнопки
+  const getButtonClass = (isActive: boolean) =>
+    `w-12 h-12 border-2 rounded-lg shadow-lg flex items-center justify-center transition-all active:scale-95 relative ${
+      isActive
+        ? "bg-[#8b5a2b] border-[#d4af37] text-[#f4e4bc]"
+        : "bg-[#e3d5b8] border-[#8b5a2b] text-[#5c3a1e] hover:bg-[#d4c5a9]"
+    }`;
+
   return (
-    // ✅ ПЕРЕНЕСЕНО В ВЕРХНИЙ ПРАВЫЙ УГОЛ
     <div className="absolute top-4 right-4 md:top-6 md:right-6 flex flex-col gap-3 z-[1000]">
-      
-      {/* Кнопка Зум + */}
-      <button
-        onClick={handleZoomIn}
-        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 group relative"
-        title="Приблизить"
-      >
-        <span className="text-2xl font-serif font-bold">+</span>
-        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-[#8b5a2b] rounded-full opacity-50"></div>
-      </button>
+      {/* ЗУМ */}
+      <div className="flex flex-col gap-1 bg-[#e3d5b8]/90 p-1 rounded-lg border border-[#8b5a2b] shadow-md backdrop-blur-sm">
+        <button
+          onClick={handleZoomIn}
+          className="w-10 h-10 flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] rounded transition-colors text-xl font-bold"
+        >
+          +
+        </button>
+        <div className="h-[1px] bg-[#8b5a2b]/30 mx-2"></div>
+        <button
+          onClick={handleZoomOut}
+          className="w-10 h-10 flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] rounded transition-colors text-xl font-bold"
+        >
+          −
+        </button>
+      </div>
 
-      {/* Кнопка Зум - */}
-      <button
-        onClick={handleZoomOut}
-        className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 group relative"
-        title="Отдалить"
-      >
-        <span className="text-2xl font-serif font-bold">-</span>
-        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-[#8b5a2b] rounded-full opacity-50"></div>
-      </button>
+      <div className="h-1"></div>
 
-      {/* Разделитель для визуальной группы */}
-      <div className="h-2"></div>
-
-      {/* Переключатель режима карты (столбиком) */}
+      {/* СЛОИ КАРТЫ */}
       <div className="flex flex-col gap-2">
+        {/* 1. МОЯ КАРТА (Зырянск) */}
         <button
           onClick={() => setMapMode("ziryansk")}
-          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95"
+          className={getButtonClass(mapMode === "ziryansk")}
           title="Карта Зырянска"
         >
-          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8.70938C3 7.23584 3 6.49907 3.39264 6.06935C3.53204 5.91678 3.70147 5.79466 3.89029 5.71066C4.42213 5.47406 5.12109 5.70705 6.51901 6.17302C7.58626 6.52877 8.11989 6.70665 8.6591 6.68823C8.85714 6.68147 9.05401 6.65511 9.24685 6.60952C9.77191 6.48541 10.2399 6.1734 11.176 5.54937L12.5583 4.62778C13.7574 3.82843 14.3569 3.42876 15.0451 3.3366C15.7333 3.24444 16.4168 3.47229 17.7839 3.92799L18.9487 4.31624C19.9387 4.64625 20.4337 4.81126 20.7169 5.20409C21 5.59692 21 6.11871 21 7.16229V15.2907C21 16.7642 21 17.501 20.6074 17.9307C20.468 18.0833 20.2985 18.2054 20.1097 18.2894C19.5779 18.526 18.8789 18.293 17.481 17.827C16.4137 17.4713 15.8801 17.2934 15.3409 17.3118C15.1429 17.3186 14.946 17.3449 14.7532 17.3905C14.2281 17.5146 13.7601 17.8266 12.824 18.4507L11.4417 19.3722C10.2426 20.1716 9.64311 20.5713 8.95493 20.6634C8.26674 20.7556 7.58319 20.5277 6.21609 20.072L5.05132 19.6838C4.06129 19.3538 3.56627 19.1888 3.28314 18.7959C3 18.4031 3 17.8813 3 16.8377V8.70938Z" stroke="#060d25" strokeWidth="1.5"/>
-            <path opacity="0.5" d="M9 6.63867V20.5" stroke="#060d25" strokeWidth="1.5"/>
-            <path opacity="0.5" d="M15 3V17" stroke="#060d25" strokeWidth="1.5"/>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M9 20l-5-4V4l5 4v12zm6 0l-5-4V4l5 4v12zm6 0l-5-4V4l5 4v12z" />
           </svg>
+          {mapMode === "ziryansk" && (
+            <div className="absolute bottom-1 w-1.5 h-1.5 bg-[#f4e4bc] rounded-full"></div>
+          )}
         </button>
 
+        {/* 2. СПУТНИК */}
         <button
           onClick={() => setMapMode("default")}
-          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95"
-          title="Спутник"
+          className={getButtonClass(mapMode === "default")}
+          title="Спутник (Esri)"
         >
-          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8.70938C3 7.23584 3 6.49907 3.39264 6.06935C3.53204 5.91678 3.70147 5.79466 3.89029 5.71066C4.42213 5.47406 5.12109 5.70705 6.51901 6.17302C7.58626 6.52877 8.11989 6.70665 8.6591 6.68823C8.85714 6.68147 9.05401 6.65511 9.24685 6.60952C9.77191 6.48541 10.2399 6.1734 11.176 5.54937L12.5583 4.62778C13.7574 3.82843 14.3569 3.42876 15.0451 3.3366C15.7333 3.24444 16.4168 3.47229 17.7839 3.92799L18.9487 4.31624C19.9387 4.64625 20.4337 4.81126 20.7169 5.20409C21 5.59692 21 6.11871 21 7.16229V15.2907C21 16.7642 21 17.501 20.6074 17.9307C20.468 18.0833 20.2985 18.2054 20.1097 18.2894C19.5779 18.526 18.8789 18.293 17.481 17.827C16.4137 17.4713 15.8801 17.2934 15.3409 17.3118C15.1429 17.3186 14.946 17.3449 14.7532 17.3905C14.2281 17.5146 13.7601 17.8266 12.824 18.4507L11.4417 19.3722C10.2426 20.1716 9.64311 20.5713 8.95493 20.6634C8.26674 20.7556 7.58319 20.5277 6.21609 20.072L5.05132 19.6838C4.06129 19.3538 3.56627 19.1888 3.28314 18.7959C3 18.4031 3 17.8813 3 16.8377V8.70938Z" stroke="#1C274C" strokeWidth="1.5"/>
-            <path opacity="0.5" d="M9 6.63867V20.5" stroke="#1C274C" strokeWidth="1.5"/>
-            <path opacity="0.5" d="M15 3V17" stroke="#1C274C" strokeWidth="1.5"/>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
           </svg>
+          {mapMode === "default" && (
+            <div className="absolute bottom-1 w-1.5 h-1.5 bg-[#f4e4bc] rounded-full"></div>
+          )}
         </button>
 
+        {/* 3. ТОПО 1988 */}
         <button
           onClick={() => setMapMode("topo-1988")}
-          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 text-sm font-bold"
+          className={getButtonClass(mapMode === "topo-1988")}
           title="Топокарта 1988"
         >
-          1988
+          <span className="font-serif font-bold text-lg">88</span>
+          {mapMode === "topo-1988" && (
+            <div className="absolute bottom-1 w-1.5 h-1.5 bg-[#f4e4bc] rounded-full"></div>
+          )}
         </button>
 
+        {/* 4. ТОПО 1982 */}
         <button
           onClick={() => setMapMode("topo-1982")}
-          className="w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 text-sm font-bold"
+          className={getButtonClass(mapMode === "topo-1982")}
           title="Топокарта 1982"
         >
-          1982
+          <span className="font-serif font-bold text-lg">82</span>
+          {mapMode === "topo-1982" && (
+            <div className="absolute bottom-1 w-1.5 h-1.5 bg-[#f4e4bc] rounded-full"></div>
+          )}
         </button>
       </div>
     </div>
