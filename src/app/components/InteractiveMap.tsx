@@ -60,7 +60,7 @@ export default function InteractiveMap() {
 
         {mapMode === "topo-1988" && (
           <ImageOverlay
-            url="https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/topo-1988.webp"
+            url="https://res.cloudinary.com/xv01jkbw/image/upload/v1784283430/compressed_topo-1988_ng3sgd.webp"
             bounds={[
               [52.235, 107.73],
               [52.295, 107.84],
@@ -71,7 +71,7 @@ export default function InteractiveMap() {
         )}
         {mapMode === "topo-1982" && (
           <ImageOverlay
-            url="https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/topo-1982.webp"
+            url="https://res.cloudinary.com/xv01jkbw/image/upload/v1784283434/compressed_topo-1982_sdrr0h.webp"
             bounds={[
               [52.235, 107.71],
               [52.295, 107.83],
@@ -82,7 +82,7 @@ export default function InteractiveMap() {
         )}
         {mapMode === "ziryansk" && (
           <ImageOverlay
-            url="https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/ziryansk.webp"
+            url="https://res.cloudinary.com/xv01jkbw/image/upload/v1784283434/compressed_ziryansk_enfdx7.webp"
             bounds={[
               [52.241175, 107.707171],
               [52.283425, 107.85156],
