@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { usePaperSound } from "../hooks/usePaperSound";
+import ViewCounter from "./ViewCounter";
 
 interface IntroModalProps {
   isVisible: boolean;
@@ -93,7 +94,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <p className="font-cusaiv text-base md:text-lg italic text-[#5c3a1e] leading-snug">
                       для лучшего опыта используйте компьютер
                     </p>
-
+                    
                     <div className="pt-4 border-t border-[#8b5a2b]/30 text-sm md:text-base text-[#3e2723]">
                       <p className="mb-2 font-bold uppercase tracking-wider text-[#5c3a1e] text-[14px] md:text-xs">
                         Связь с автором карты
@@ -123,6 +124,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         </p>
                       </div>
                     </div>
+                      <ViewCounter />
                   </div>
                 </div>
 
@@ -175,10 +177,9 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <p>
                       В XIX веке на горе Кынгора стояла часовня Параскевы
                       Пятницы, а в Утатах — часовня Николая Чудотворца. Ещё одна
-                      Никольская часовня стояла на месте нынешней
-                      администрации. Все три были разрушены после революции.
-                      Сейчас на Кынгоре — крест, установленный Геннадием
-                      Севергиным.
+                      Никольская часовня стояла на месте нынешней администрации.
+                      Все три были разрушены после революции. Сейчас на Кынгоре
+                      — крест, установленный Геннадием Севергиным.
                     </p>
 
                     <p>
@@ -295,8 +296,8 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <p>
                       После войны в 1950 году завершили строительство второй
                       очереди Зырянской ГЭС. Свет пришёл в Ангыр, Батурино и
-                      Нестерово. ГЭС была сложным гидротехническим сооружением
-                      — спрямили устье Ангыра. Директором был Георгий Михайлович
+                      Нестерово. ГЭС была сложным гидротехническим сооружением —
+                      спрямили устье Ангыра. Директором был Георгий Михайлович
                       Юртвенсон. В 1956 году турбину заменили на дизельную, а в
                       1960-х село подключили к Братской ГЭС. На ГЭС также была
                       мельница.
@@ -464,9 +465,9 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                       Из Зырянска на фронт ушло 149 человек, 67 из них погибли.
                       Среди известных земляков — Колмаков Павел Антонович,
                       Почётный гражданин Прибайкальского района и Бурятии;
-                      Хмелев Алексей Иванович, кавалер двух орденов Ленина;
-                      Иван Шульгин, полковник КГБ; Тарасов Дмитрий Семенович,
-                      главный бухгалтер Улан-Удэнского авиазавода.
+                      Хмелев Алексей Иванович, кавалер двух орденов Ленина; Иван
+                      Шульгин, полковник КГБ; Тарасов Дмитрий Семенович, главный
+                      бухгалтер Улан-Удэнского авиазавода.
                     </p>
 
                     <p>
@@ -504,9 +505,19 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     </p>
                     <p className="leading-relaxed opacity-90 text-xs md:text-sm">
                       Хочу выразить благодарность в помощи создания
-                      интерактивной карты моему брату Максиму, родственникам-старожилам, библиотеке, школе за материал.
+                      интерактивной карты моему брату Максиму,
+                      родственникам-старожилам, библиотеке, школе за материал.
                     </p>
                     <div className="mt-2 space-y-1 font-mono text-[14px] md:text-xxs text-[#5c3a1e]">
+                      <p>
+                        Открытый исходный код этой карты:{" "}
+                        <a
+                          href="https://github.com/BymBu/map-of-Ziryansk"
+                          className="underline hover:text-[#8b5a2b]"
+                        >
+                          Ссылка
+                        </a>
+                      </p>
                       <p>
                         Другой мой проект - 3D Байкал:{" "}
                         <a
