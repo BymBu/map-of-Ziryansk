@@ -674,7 +674,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на СТФ",
     coords: [52.266198, 107.757872],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/stf.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284412/stf_aqo4lw.jpg",
     confidence: true,
   },
 
@@ -683,7 +683,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на усадьбу",
     coords: [52.264089, 107.772999],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/ysadba.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284417/ysadba_esvk3w.jpg",
     confidence: true,
   },
   {
@@ -691,7 +691,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на кынгору",
     coords: [52.267257, 107.791966],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/kyngora-1.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284421/kyngora-1_prfsqv.jpg",
     confidence: true,
   },
   {
@@ -699,7 +699,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на кынгору",
     coords: [52.266523, 107.791271],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/kyngora-2.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284388/kyngora-2_l0r5uy.jpg",
     confidence: true,
   },
   {
@@ -707,7 +707,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на мост",
     coords: [52.268387, 107.785819],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/most-2.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/most-2_nqcbp3.jpg",
     confidence: true,
   },
   {
@@ -715,7 +715,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ",
     coords: [52.267513, 107.773699],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/mtf-1.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284426/mtf-1_glzjk1.jpg",
     confidence: true,
   },
   {
@@ -723,7 +723,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ",
     coords: [52.268623, 107.773875],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/mtf-2.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/mtf-2_h2knwt.jpg",
     confidence: true,
   },
   {
@@ -731,7 +731,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую улицу",
     coords: [52.267382, 107.782496],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/street-1.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284413/street-1_pu98r3.jpg",
     confidence: true,
   },
   {
@@ -739,7 +739,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую и Хмелева улицы",
     coords: [52.26609, 107.778214],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/street-2.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284434/street-2_ijzetb.jpg",
     confidence: true,
   },
   {
@@ -747,7 +747,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую улицу",
     coords: [52.271886, 107.791599],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/rip.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284397/rip_pdlguv.jpg",
     confidence: true,
   },
   {
@@ -755,7 +755,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ. Утаты",
     coords: [52.279154, 107.779599],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/mtf-ytati-1.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-1_tzcfkc.jpg",
     confidence: true,
   },
   {
@@ -763,7 +763,7 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ. Утаты",
     coords: [52.280976, 107.780555],
     type: "panorama",
-    panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/mtf-ytati-2.JPG",
+    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-2_da0ba7.jpg",
     confidence: true,
   },
 ];
