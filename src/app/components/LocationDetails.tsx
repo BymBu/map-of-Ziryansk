@@ -130,7 +130,7 @@ export default function LocationDetails({
                   className="relative aspect-square rounded-sm overflow-hidden bg-[#0f0c09] border border-[#3e2723] hover:border-[#8b5a2b] transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50"
                   aria-label={`Открыть фото ${idx + 1}`}
                 >
-                  <CloudinaryImage 
+                  <CloudinaryImage
                     src={img}
                     alt={`Архивное фото ${idx + 1}: ${location.name}`}
                     className="object-cover transition-transform duration-500 hover:scale-110"
@@ -151,6 +151,21 @@ export default function LocationDetails({
             photo={location.images[activePhotoIndex]}
             alt={`Архивное фото ${activePhotoIndex + 1}: ${location.name}`}
             onClose={() => setActivePhotoIndex(null)}
+            currentIndex={activePhotoIndex}
+            totalPhotos={location.images?.length || 0}
+            onNext={() => {
+              if (
+                location.images &&
+                activePhotoIndex < location.images.length - 1
+              ) {
+                setActivePhotoIndex(activePhotoIndex + 1);
+              }
+            }}
+            onPrev={() => {
+              if (activePhotoIndex > 0) {
+                setActivePhotoIndex(activePhotoIndex - 1);
+              }
+            }}
           />
         )}
       </AnimatePresence>
