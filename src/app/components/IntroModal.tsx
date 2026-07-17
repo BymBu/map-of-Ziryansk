@@ -161,7 +161,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "3 / 4" }}
                       >
                         <Image
-                          src="/photos/gimn-zyryanska.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/gimn-zyryanska.jpg"
                           alt="Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова"
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -196,7 +196,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "4 / 3" }}
                       >
                         <Image
-                          src="/photos/ziryansk-1.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-1.jpg"
                           alt="Собрание колхоза в Зырянске. 1930-е годы. В первом ряду — Баталов Иван Никанорович"
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -226,7 +226,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                           style={{ aspectRatio: "4 / 3" }}
                         >
                           <Image
-                            src="/photos/pushkarev-zyryansk.jpg"
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/pushkarev-zyryansk.jpg"
                             alt="Картина Семёна Пушкарёва «Зырянск», 1975 г."
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
@@ -243,7 +243,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                           style={{ aspectRatio: "4 / 3" }}
                         >
                           <Image
-                            src="/photos/ziryansk-3.jpg"
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-3.jpg"
                             alt="Картина Семёна Пушкарёва «Старая мельница», 1938 г."
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
@@ -260,7 +260,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                           style={{ aspectRatio: "4 / 3" }}
                         >
                           <Image
-                            src="/photos/ges-6.jpg"
+                            src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ges-6.jpg"
                             alt="Картина Семёна Пушкарёва «Память детства», 1995 г."
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
@@ -280,7 +280,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "4 / 3" }}
                       >
                         <Image
-                          src="/photos/pushkarev-photo.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/pushkarev-photo.jpg"
                           alt="Семён Иванович Пушкарёв — художник-любитель из Зырянска"
                           fill
                           sizes="(max-width: 768px) 100vw, 30vw"
@@ -310,7 +310,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "4 / 3" }}
                       >
                         <Image
-                          src="/photos/ziryansk-2.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-2.jpg"
                           alt="Правление колхоза в Зырянске. 1930-е годы"
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -338,7 +338,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                             style={{ aspectRatio: "4 / 3" }}
                           >
                             <Image
-                              src="/photos/trud-book.jpg"
+                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/trud-book.jpg"
                               alt="Трудовая книжка работницы совхоза «Зырянский»"
                               fill
                               sizes="(max-width: 768px) 100vw, 50vw"
@@ -355,7 +355,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                             style={{ aspectRatio: "4 / 3" }}
                           >
                             <Image
-                              src="/photos/salary-1.jpg"
+                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/salary-1.jpg"
                               alt="Поощрения и достижения работников совхоза"
                               fill
                               sizes="(max-width: 768px) 100vw, 50vw"
@@ -381,7 +381,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                             style={{ aspectRatio: "3 / 4" }}
                           >
                             <Image
-                              src="/photos/sber-1.jpg"
+                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-1.jpg"
                               alt="Сберегательная книжка Сбербанка СССР"
                               fill
                               sizes="(max-width: 768px) 100vw, 50vw"
@@ -398,7 +398,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                             style={{ aspectRatio: "3 / 4" }}
                           >
                             <Image
-                              src="/photos/sber-2.jpg"
+                              src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/sber-2.jpg"
                               alt="Сберегательная книжка СССР"
                               fill
                               sizes="(max-width: 768px) 100vw, 50vw"
@@ -422,7 +422,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "4 / 3" }}
                       >
                         <Image
-                          src="/photos/order.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/order.jpg"
                           alt="Ордер на выдачу квартиры рабочему совхоза «Зырянский»"
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -442,7 +442,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                         style={{ aspectRatio: "4 / 3" }}
                       >
                         <Image
-                          src="/photos/map-sovxoz.jpg"
+                          src="https://res.cloudinary.com/xv01jkbw/image/upload/photos/map-sovxoz.jpg"
                           alt="Рукописная карта совхоза «Зырянский», нарисована от руки"
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"

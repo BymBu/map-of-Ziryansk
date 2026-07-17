@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import PhotoModal from "./PhotoModal";
 import { motion, AnimatePresence } from "framer-motion";
+import CloudinaryImage from "./CloudinaryImage";
 
 export default function LocationDetails({
   location,
@@ -129,13 +130,11 @@ export default function LocationDetails({
                   className="relative aspect-square rounded-sm overflow-hidden bg-[#0f0c09] border border-[#3e2723] hover:border-[#8b5a2b] transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50"
                   aria-label={`Открыть фото ${idx + 1}`}
                 >
-                  <Image
+                  <CloudinaryImage 
                     src={img}
                     alt={`Архивное фото ${idx + 1}: ${location.name}`}
-                    fill
-                    sizes="(max-width: 768px) 40vw, 120px"
                     className="object-cover transition-transform duration-500 hover:scale-110"
-                    loading="lazy"
+                    width={800}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent pointer-events-none" />
                 </button>

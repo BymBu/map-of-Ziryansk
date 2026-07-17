@@ -16,21 +16,24 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       " В XIX — начале XX века здесь стояла одна из трёх часовен. В 1930-х её разрушили. Спустя 70 лет местный житель Геннадий Севергин поставил на этом месте поклонный крест — чтобы место не забыли. Зимой дети частенько скатываются с нее на санях. Сейчас это тихая гора над Итанцей, где раньше молились, а теперь ветер.",
-    images: ["/photos/kyngora-1.jpg", "/photos/kyngora-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kyngora-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kyngora-2.jpg",
+    ],
     confidence: true,
   },
   {
     id: "Chasovnya",
     name: "Часовня на горе Кынгора (Утаты)",
-    coords: [52.267564, 107.792945],
+    coords: [52.2675999, 107.792959],
     type: "history",
     description:
       "В 1817 году, согласно архивному документу «Описание состоящим по Итанцинской волости часовням» от 21 октября 1817 года, в деревне Утаты (Утатинское) действовала часовня во имя святого Николая Чудотворца. Размеры: в длину 3 аршина 4 вершка, в ширину 2 аршина 12 вершков. В ней находились Животворящий Крест и 4 святых образа. В Зырянске в то же время была часовня Параскевы Пятницы (на месте этой метки) и ещё одна Никольская часовня рядом с местом, где сейчас администрация. После революции все часовни разрушили. Сейчас на горе Кынгора стоит поклонный крест, установленный Геннадием Севергиным. 4-е фото - остатки фундамента от часовни",
     images: [
-      "/photos/krest.jpg",
-      "/photos/krest-2.jpg",
-      "/photos/krest-3.jpg",
-      "/photos/krest-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/krest.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/krest-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/krest-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784258997/krest-4_cnxqid.jpg",
     ],
     confidence: true,
   },
@@ -42,12 +45,12 @@ export const locations: LocationPoint = [
     description:
       "До ГЭС на этом месте стояла мельница. Саму ГЭС строили в два этапа. Первый — в 1940 году силами трёх колхозов. Второй — после войны: в 1950 году завершили вторую очередь, и свет пришёл в Ангыр, Батурино и Нестерово. Это было сложное гидротехническое сооружение — для наполнения водохранилища даже спрямили устье реки Ангыр. Директором станции был Георгий Михайлович Юртвенсон. Турбина работала недолго — в 1956 году её заменили на дизельную, а в начале 1960-х село подключили к Братской ГЭС, а Зырянскую демонтировали.",
     images: [
-      "/photos/ges-6.jpg",
-      "/photos/ges-1.jpg",
-      "/photos/ges-2.jpg",
-      "/photos/ges-3.jpg",
-      "/photos/ges-4.jpg",
-      "/photos/ges-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ges-6.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784258919/ges-1_hnhlvp.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ges-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ges-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784258932/ges-4_ysjfkm.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784258297/photos/ges-5.jpg",
     ],
     confidence: true,
   },
@@ -59,9 +62,9 @@ export const locations: LocationPoint = [
     description:
       "Современное кладбище, но уже заполненное. Ближе к входу — свежие захоронения. Дальше, в глубине, — едва заметные бугорки без крестов. Там лежат поколения, которые уже никто не помнит. Когда-то кладбище, скорее всего, было больше — оно начиналось левее и упиралось в то место, где сейчас проложена дорога. Кости, которые до сих пор торчат из стены у дороги, — подтверждение того, что дорога прошла прямо через старые захоронения. Раньше вход на кладбище, вероятно, был с левой стороны. После того как дорога 'разрезала' погост, вход перенесли на нынешнее место.",
     images: [
-      "/photos/kladbische-1.jpg",
-      "/photos/kladbische-2.jpg",
-      "/photos/kladbische-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259003/kladbische-1_pevsmn.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259005/kladbische-2_ydb9n3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kladbische-3.jpg",
     ],
     confidence: true,
   },
@@ -73,10 +76,10 @@ export const locations: LocationPoint = [
     description:
       "Это место — самая страшная и самая честная страница истории Зырянска. Кости торчат из стены прямо у дороги. Их вскрыли, когда строили проезд через склон. В 2026 году я заглянул туда, вытащил кость и потрогал её руками. Она была лёгкая, сухая, почти как дерево. Возраст таких костей — примерно 100–200 лет. Они лежат там, где когда-то продолжалось кладбище. Им уже всё равно на дороги.",
     images: [
-      "/photos/bones-1.jpg",
-      "/photos/bones-2.jpg",
-      "/photos/bones-3.jpg",
-      "/photos/bones-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/bones-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/bones-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/bones-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/bones-4.jpg",
     ],
     confidence: true,
   },
@@ -108,9 +111,9 @@ export const locations: LocationPoint = [
     description:
       "Первая школа в Зырянске открылась в 1905 году — это было начальное училище. В 1960-е годы построили новое здание, где уже учились все классы. Сейчас школа работает, но учеников стало меньше. Деревня стареет. На первом фото - школа в  2014 году",
     images: [
-      "/photos/school-1.jpg",
-      "/photos/school-2.jpg",
-      "/photos/school-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/school-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/school-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/school-3.jpg",
     ],
     confidence: true,
   },
@@ -122,13 +125,13 @@ export const locations: LocationPoint = [
     description:
       "В полях, на месте бывшей деревни Утаты, сохранились следы хозяйственной жизни. Мы нашли хранилище и несколько землянок — одна из них открыта, внутри шлак и остатки деревянных перекрытий. Судя по конструкции, это было зернохранилище: холм, накрытый целлофаном и землёй. Рядом — огромная траншея силосной ямы — в неё закладывали корм для скота. Всё вместе говорит о том, что Утаты не просто были деревней, а работали как колхозный узел.",
     images: [
-      "/photos/zeml-1.jpg",
-      "/photos/zeml-2.jpg",
-      "/photos/zeml-3.jpg",
-      "/photos/zeml-4.jpg",
-      "/photos/zeml-5.jpg",
-      "/photos/zeml-6.jpg",
-      "/photos/zeml-7.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/zeml-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259072/zeml-2_rhnmmx.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/zeml-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/zeml-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/zeml-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259074/zeml-6_wavxir.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/zeml-7.jpg",
     ],
     confidence: true,
   },
@@ -140,26 +143,26 @@ export const locations: LocationPoint = [
     description:
       "МТФ — это молочно-товарная ферма. В СССР такие были в каждом крупном селе. Держали коров, доили, сдавали молоко государству. На МТФ работала добрая половина деревни — доярки, скотники, водители. В Зырянске МТФ держалась дольше, чем СТФ. Говорят, она работала почти до наших дней. Но недавно сгорела. Сейчас вместо фермы только пепелище и обугленный бетон.",
     images: [
-      "/photos/mtf-1-1.jpg",
-      "/photos/mtf-1-2.jpg",
-      "/photos/mtf-1-3.jpg",
-      "/photos/mtf-1-4.jpg",
-      "/photos/mtf-1-5.jpg",
-      "/photos/mtf-1-6.jpg",
-      "/photos/mtf-1-7.jpg",
-      "/photos/mtf-1-8.jpg",
-      "/photos/mtf-1-9.jpg",
-      "/photos/mtf-1-10.jpg",
-      "/photos/mtf-1-11.jpg",
-      "/photos/mtf-1-12.jpg",
-      "/photos/mtf-1-13.jpg",
-      "/photos/mtf-1-14.jpg",
-      "/photos/mtf-1-15.jpg",
-      "/photos/mtf-1-16.jpg",
-      "/photos/mtf-1-17.jpg",
-      "/photos/mtf-1-18.jpg",
-      "/photos/mtf-1-19.jpg",
-      "/photos/mtf-1-20.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-6.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-7.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-8.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-9.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-10.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-11.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-12.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-13.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-14.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-15.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-16.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-17.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-18.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-19.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-1-20.jpg",
     ],
     confidence: true,
   },
@@ -171,20 +174,20 @@ export const locations: LocationPoint = [
     description:
       "Молочно-товарная ферма. Когда-то здесь было три соединённых строения — коровники, доильные залы, склады. На пике развития в совхозе было 508 коров и 1619 голов молодняка. Ферма давала работу половине села. Здесь работала моя бабушка. Сейчас от фермы остались только руины каркасов, бетонные фундаменты, куски асфальта и разбросанные строительные блоки.",
     images: [
-      "/photos/mtf-2-alpha.jpg",
-      "/photos/mtf-2-2.jpg",
-      "/photos/mtf-2-1.jpg",
-      "/photos/mtf-2-3.jpg",
-      "/photos/mtf-2-4.jpg",
-      "/photos/mtf-2-5.jpg",
-      "/photos/mtf-2-6.jpg",
-      "/photos/mtf-2-7.jpg",
-      "/photos/mtf-2-8.jpg",
-      "/photos/mtf-2-9.jpg",
-      "/photos/mtf-2-10.jpg",
-      "/photos/mtf-2-11.jpg",
-      "/photos/mtf-2-12.jpg",
-      "/photos/mtf-2-13.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-alpha.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-6.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-7.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-8.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-9.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-10.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-11.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-12.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mtf-2-13.jpg",
     ],
     confidence: true,
   },
@@ -196,11 +199,11 @@ export const locations: LocationPoint = [
     description:
       "В советское время при каждом колхозе строили СТФ — свинотоварные фермы. Это были отдельные комплексы, где держали свиней, кормили их, разводили и сдавали мясо государству. СТФ давала работу местным и была частью колхозной экономики. Сейчас от этой фермы почти ничего не осталось — только фундамент, каркас и поломанные бетонные плиты. Она давно не работает, и даже те, кто жил рядом, уже не помнят, когда там в последний раз хрюкали.",
     images: [
-      "/photos/stf-1.jpg",
-      "/photos/stf-2.jpg",
-      "/photos/stf-3.jpg",
-      "/photos/stf-4.jpg",
-      "/photos/stf-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/stf-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/stf-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/stf-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/stf-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/stf-5.jpg",
     ],
     confidence: true,
   },
@@ -252,12 +255,12 @@ export const locations: LocationPoint = [
     description:
       "Село на берегу реки Итанцы. Известно с 1735 года. Когда-то здесь было три деревни, колхоз, фермы и даже своя ГЭС. Сейчас — тишина, пустые дома и несколько десятков людей, которые ещё помнят, как здесь кипела жизнь. В 2026 году я прошёл по каждому забору, нашёл кости, остатки строений и следы исчезнувших деревень. Это — моя карта памяти. 1-e фото - Собрание колхоза в с Зырянск, 1 ряд в центре сидит Баталов Иван Никанорович, 2-е фото - правление колхоза в Зырянске, 30-е годы, 3-е фото - картина зырянска, 4-е бухгалтера совхоза Зырянский. Эти и остальные фото можно посмотреть на странице библиотеки Зырянска в одноклассниках",
     images: [
-      "/photos/ziryansk-1.jpg",
-      "/photos/ziryansk-2.jpg",
-      "/photos/ziryansk-3.jpg",
-      "/photos/ziryansk-4.jpg",
-      "/photos/ziryansk-5.jpg",
-      "/photos/ziryansk-6.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ziryansk-6.jpg",
     ],
     confidence: true,
   },
@@ -269,13 +272,13 @@ export const locations: LocationPoint = [
     description:
       "Здание местного клуба, построенное в 1965 году. В нём расположены зрительный зал, библиотека, комната боевой славы, кружки и студии. Раньше здесь работал магазин «Весна», была почта, а библиотека и сейчас на месте. В 2011 году открылся культурно-информационный центр. С 2013 года директор — Голубева С. А. В 2025 году клуб вошёл в федеральную программу капремонта — выделили больше 9 миллионов рублей. Жители ждут, что здесь станет тепло, уютно и красиво. Сейчас в клубе плетут маскировочные сети, занимаются дети и взрослые. Это единственное место в селе, где ещё можно собраться всем вместе.",
     images: [
-      "/photos/kic-1.jpg",
-      "/photos/kic-2.jpg",
-      "/photos/kic-3.jpg",
-      "/photos/kic-4.jpg",
-      "/photos/kic-5.jpg",
-      "/photos/kic-6.jpg",
-      "/photos/kic-7.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-6.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kic-7.jpg",
     ],
     confidence: true,
   },
@@ -297,10 +300,10 @@ export const locations: LocationPoint = [
     description:
       "На этом месте раньше стояла часовня во имя святого Николая Чудотворца. В 1817 году она числилась в архивных документах. Позже часовню утратили, а на её месте построили здание начальной школы. Здесь же находилась библиотека и жили учителя. В 2005 году здание стало сельской администрацией, которую возглавляет Погорельский Владимир Викторович. У администрации есть место для пожарной машины.",
     images: [
-      "/photos/admin-1.jpg",
-      "/photos/admin-2.jpg",
-      "/photos/admin-3.jpg",
-      "/photos/admin-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/admin-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/admin-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/admin-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/admin-4.jpg",
     ],
     confidence: true,
   },
@@ -312,9 +315,9 @@ export const locations: LocationPoint = [
     description:
       "Сегодня на этом месте — почти ровное поле, а когда-то здесь стояли теплицы. В советское время в Зырянске выращивали овощи: огурцы, помидоры, лук. Работали круглый год, давали урожай даже зимой. Сейчас от них почти ничего не осталось — только крапива, бугры да редкие осколки стекла и ржавые трубы. Когда я впервые пришёл сюда, я подумал, что это старый погост: слишком ровные бугры и слишком сочная крапива. Но папа сказал — это не кладбище, это просто теплицы, которые никто не убрал. Земля помнит, что здесь что-то росло.",
     images: [
-      "/photos/teplica.jpg",
-      "/photos/teplica-2.jpg",
-      "/photos/teplica-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/teplica.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/teplica-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259064/teplica-3_ufvaix.jpg",
     ],
     confidence: true,
   },
@@ -345,7 +348,9 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Рядом с администрацией когда-то была небольшая библиотека. Папа рассказывал, что она работала, когда он был маленьким. Местные брали книги — и взрослые, и дети. В деревне не было интернета, и книги были главным окном в мир. Место, где она стояла, же давно пустое пространство, да и библиотеки нет. Только память о том, что кто-то брал «Трёх мушкетёров» и зачитывался до дыр.",
-    images: ["/photos/biblioteka-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/biblioteka-1.jpg",
+    ],
     confidence: true,
   },
   {
@@ -355,7 +360,9 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "По рассказам местных, на месте, где сейчас стоит детская площадка, раньше находилась почта, но сейчас тут пустое место. Сюда приходили за письмами, посылками, газетами. Папа точно не помнит, но говорят, что она действительно была. Сейчас здесь площадка — качели, горка, тишина.",
-    images: ["/photos/mail-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/mail-1.jpg",
+    ],
     confidence: true,
   },
   {
@@ -365,7 +372,10 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "До того как здесь построили детскую площадку, на этом месте стоял местный клуб. В нём собирались жители, смотрели кино, танцевали, праздновали праздники. Клуб был центром жизни села. Потом он сгорел. Дословно — дотла. От него остались только фундамент и угли. Позже площадку выровняли, поставили качели и горку, но старожилы до сих пор показывают рукой и говорят: «Здесь был клуб». Фотографий не сохранилось — только память.",
-    images: ["/photos/burn-club-1.jpg", "/photos/burn-club-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/burn-club-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/burn-club-2.jpg",
+    ],
     confidence: true,
   },
   {
@@ -376,11 +386,11 @@ export const locations: LocationPoint = [
     description:
       "Сейчас здесь продуктовый магазин «Берёзка», рядом — детский сад «Одуванчик» и фельдшерский пункт. Раньше в этом здании был химсклад — хранили удобрения, ядохимикаты, семена. Запах был такой, что дети обходили стороной. Потом склад закрыли, здание стояло пустым. Позже в него заехал магазин — я помню, как в детстве мама брала меня с собой, я сидел в коляске и ждал её на улице. Магазин пережил несколько закрытий, но в 2026 году открылся снова — теперь уже как «Берёзка». Детский сад «Одуванчик» работает по направлению экологического воспитания, здесь созданы уголки природы и краеведения. Территория сада благоустроена руками сотрудников и родителей. Весной вся площадка превращается в жёлтое поле — отсюда и название.",
     images: [
-      "/photos/berezka-1.jpg",
-      "/photos/berezka-2.jpg",
-      "/photos/berezka-3.jpg",
-      "/photos/berezka-4.jpg",
-      "/photos/berezka-5.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/berezka-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/berezka-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/berezka-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/berezka-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/berezka-5.jpg",
     ],
     confidence: true,
   },
@@ -411,7 +421,9 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Сейчас здесь «Магнит», но магазин на этом месте был всегда. Кто-то из старожилов называет его просто «продуктовый», кто-то помнит ещё старую вывеску. Сюда ходили за хлебом, молоком и крупами. Потом сюда заехал «Магнит», и никто уже не помнит, как магазин назывался раньше. Здание то же, но вывески сменились. Как будто память стёрли вместе с названием.",
-    images: ["/photos/magnit-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/magnit-1.jpg",
+    ],
     confidence: true,
   },
   {
@@ -422,10 +434,10 @@ export const locations: LocationPoint = [
     description:
       "В этом здании сейчас магазин «Весна». Когда-то давно магазин занимал часть здания КИЦ, а потом его перенесли сюда — увеличение, масштабирование. До «Весны» здесь была гостиница — на втором этаже стояли кровати, и я помню их до сих пор. А слева, в задней части здания, работала пекарня. Я застал её — пахло хлебом, и это был один из тех запахов, которые не забываются.",
     images: [
-      "/photos/vesna-2.jpg",
-      "/photos/vesna-3.jpg",
-      "/photos/vesna-4.jpg",
-      "/photos/burn-club-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/vesna-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/vesna-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/vesna-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/burn-club-2.jpg",
     ],
     confidence: true,
   },
@@ -437,9 +449,9 @@ export const locations: LocationPoint = [
     description:
       "Маленький дом у гаражей, сейчас заколоченный и пустой. Раньше в нём была разнарядка — отсюда раздавали задания на день: кому на поле, кому на ферму, кому за руль. В советское время это был центр управления рабочим днём. Именно здесь выписывали путёвки, выдавали наряды, решали, кто куда поедет. Теперь дом забит досками, и только старожилы помнят, как сюда с утра тянулись люди с папками и листочками. 3-е фото - грузотакси. Перевозили людей на сельхозработы.",
     images: [
-      "/photos/raznaryadka-1.jpg",
-      "/photos/raznaryadka-2.jpg",
-      "/photos/raznaryadka-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/raznaryadka-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/raznaryadka-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/raznaryadka-3.jpg",
     ],
     confidence: true,
   },
@@ -450,7 +462,10 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Раньше здесь стоял дом, где жили две бабушки. Потом в нём открылся магазин «Огонёк». Дом перестроили, он стал двухэтажным. Я помню его ещё до пожара — мы ходили туда за чем-то, но это стёрлось из памяти. Огонёк горел, когда я учился в школе. Это был мой первый звонок в 112. До сих пор помню, как набирал номер и говорил, что горит магазин. Сейчас на этом месте стоит одноэтажный «Огонёк» — тот самый, восстановленный. Он всё ещё работает. И стоит там же.",
-    images: ["/photos/ogonek-1.jpg", "/photos/ogonek-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ogonek-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ogonek-2.jpg",
+    ],
     confidence: true,
   },
   {
@@ -460,7 +475,9 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Маленький магазинчик, совсем небольшой — даже не магазин, а скорее лавка. В этом доме жили буряты, и там же держали магазин. Продавали что-то простое, деревенское — скорее всего продукты. Помню, как папа заходил туда что-то покупать, я стоял рядом и ждал. Магазина давно нет, дом стоит пустой, но этот кадр из детства остался: маленький дом, папа выходит с пакетом.",
-    images: ["/photos/shop-bur-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/shop-bur-1.jpg",
+    ],
     confidence: true,
   },
   {
@@ -470,7 +487,10 @@ export const locations: LocationPoint = [
     type: "nature",
     description:
       "Когда-то Ангырчик был настоящей рекой. Говорят, в нём даже лошади купались — такой он был глубокий и полноводный. Сейчас это просто ручей, который можно перешагнуть. Когда я был маленьким, мы с пацанами бродили по нему, плескались в воде. Помню, как трактором нам выкапывали яму, чтобы было где купаться. Сейчас река обмелела, заросла, но я до сих пор помню её прохладу и тот летний запах воды.",
-    images: ["/photos/river-angyr-1.jpg", "/photos/river-angyr-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/river-angyr-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/river-angyr-2.jpg",
+    ],
     confidence: true,
   },
   {
@@ -540,7 +560,9 @@ export const locations: LocationPoint = [
     type: "nature",
     description:
       "Гора Мархатай — та самая, что виднеется с дороги на Турунтаево. Сама гора очень большая, но на приложенном фото лишь часть. До неё от Зырянска всегда казалось далеко: идти через Итанцу, потом через лес, и вот она, уже рядом. В детстве я иногда катался там зимой — санки, горка, ветер в лицо. Я помню этот путь — холод, хруст снега и ощущение, что ты на краю мира. Сейчас — просто гора, с которой видно всё село.",
-    images: ["/photos/marxatay-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/marxatay-1.jpg",
+    ],
     confidence: true,
   },
   {
@@ -551,9 +573,9 @@ export const locations: LocationPoint = [
     description:
       "Сейчас это довольно приличная площадка с турниками, качелями и горками. Но я помню, как она выглядела до этого. Тогда здесь стояли старые качели, лавочка и всё. Весь класс после уроков бежал сюда — кто первый, тот и качается. В мои школьные годы площадку наконец прокачали: поставили новые турники, качели, покрытие. Помню даже стройку — приходили и смотрели, как что-то меняется. Теперь сюда приходят дети помладше, а мы уже выросли.",
     images: [
-      "/photos/ploshadka-1.jpg",
-      "/photos/ploshadka-2.jpg",
-      "/photos/ploshadka-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ploshadka-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ploshadka-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/ploshadka-3.jpg",
     ],
     confidence: true,
   },
@@ -564,7 +586,10 @@ export const locations: LocationPoint = [
     type: "current",
     description:
       "Обычный деревенский дом, каких в Зырянске много. Но я запомнил его по лавочке у калитки. В моём раннем детстве на ней всегда сидели бабушки и дедушки — старожилы, которые знали всё про село. Они обсуждали погоду, новости, вспоминали, кто где жил и что было раньше. Сейчас лавочка пустая. Стариков уже нет, или они не выходят. Дом стоит, но без тех голосов он кажется другим — тихим и чужим.",
-    images: ["/photos/dom-star-1.jpg", "/photos/dom-star-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/dom-star-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/dom-star-2.jpg",
+    ],
     confidence: true,
   },
   {
@@ -574,7 +599,10 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Этот мост соединяет две части Зырянска — через реку Итанцу. По нему ездят каждый день. Раньше был ещё один мост, старый, но от него остались только остатки — пара столбов. Мост, по которому ездят сейчас, держится, но и он стареет.",
-    images: ["/photos/most-1.jpg", "/photos/most-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/most-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259005/most-2_rxwduw.jpg",
+    ],
     confidence: true,
   },
   {
@@ -585,10 +613,10 @@ export const locations: LocationPoint = [
     description:
       "Памятник воинам-землякам, павшим на фронтах Великой Отечественной войны. Объект имеет статус памятника истории регионального значения. Мемориал включает в себя стену с именами погибших зырянцев, звезду с Вечным огнём и ограждение из цепей. Когда-то была арка, но она обвалилась. Расположен в центре села. Одно из главных мест памяти для жителей Зырянска.",
     images: [
-      "/photos/memorial-vov-1.jpg",
-      "/photos/memorial-vov-2.jpg",
-      "/photos/memorial-vov-4.jpg",
-      "/photos/memorial-vov-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/memorial-vov-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/memorial-vov-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/memorial-vov-4.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/memorial-vov-3.jpg",
     ],
     confidence: true,
   },
@@ -599,7 +627,10 @@ export const locations: LocationPoint = [
     type: "current",
     description:
       "Отопляет клуб, школу и детский сад. Сначала здесь была котельная, потом здание переделали под гараж, а сейчас снова котельная. Дым идёт, тепло есть — значит, село живёт.",
-    images: ["/photos/kotelnaya-1.jpg", "/photos/kotelnaya-2.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kotelnaya-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kotelnaya-2.jpg",
+    ],
     confidence: true,
   },
   {
@@ -610,9 +641,9 @@ export const locations: LocationPoint = [
     description:
       "В XIX веке на горе Кынгора стояла часовня во имя святой великомученицы Параскевы Пятницы. В архивном документе 1817 года указаны её размеры — 3 аршина 4 вершка в длину и 2 аршина 12 вершков в ширину. Внутри хранились Животворящий Крест и четыре святых образа. В 1930-х годах часовню разрушили. В 2012 году на том месте установили поклонный крест. В 2025 году в центре села начали строить новую часовню в честь той же святой — её заложили на новом месте, потому что старое осталось в стороне. Сейчас это главная действующая церковь в Зырянске.",
     images: [
-      "/photos/paraskeva-chapel-1.jpg",
-      "/photos/paraskeva-chapel-2.jpg",
-      "/photos/paraskeva-chapel-3.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/paraskeva-chapel-1.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/paraskeva-chapel-2.jpg",
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/paraskeva-chapel-3.jpg",
     ],
     confidence: true,
   },
@@ -623,7 +654,9 @@ export const locations: LocationPoint = [
     type: "history",
     description:
       "Раньше здесь стоял еврейский купеческий дом. Дом перешёл к Орлову (бывш. дирекотр совхоза), потом дом перешел в колхоз. В здании сделали детский сад, который работал круглый год. Ясли (для самых маленьких) открывали только на лето. Сейчас в этом доме живёт глава Зырянска — Погорельский.",
-    images: ["/photos/pogorelsky-1.jpg"],
+    images: [
+      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/pogorelsky-1.jpg",
+    ],
     confidence: true,
   },
 
