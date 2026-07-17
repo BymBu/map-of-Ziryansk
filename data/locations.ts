@@ -753,7 +753,7 @@ export const locations: LocationPoint[] = [
   {
     id: "mtf-1",
     name: "Панорама на МТФ. Утаты",
-    coords: [52.279154, 107.779699],
+    coords: [52.279154, 107.779599],
     type: "panorama",
     panoramaSrc: "https://3yuzc7gm8wj4kxiu.public.blob.vercel-storage.com/mtf-ytati-1.JPG",
     confidence: true,

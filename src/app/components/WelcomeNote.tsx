@@ -65,7 +65,7 @@ export default function WelcomeNote({
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1 }} // Появляется с небольшой задержкой
         onClick={() => setShowIntro(true)}
-        className="fixed top-4 left-4 md:top-6 md:left-6 z-[1001] w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-full shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] active:scale-95 transition-colors backdrop-blur-sm"
+        className="fixed top-4 md:hidden left-4 md:top-6 md:left-6 z-[1001] w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-full shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] active:scale-95 transition-colors backdrop-blur-sm"
         aria-label="Показать инструкцию"
       >
         <svg
