@@ -72,7 +72,6 @@ export const locations: LocationPoint[] = [
     images: [
       "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259003/kladbische-1_pevsmn.jpg",
       "https://res.cloudinary.com/xv01jkbw/image/upload/v1784259005/kladbische-2_ydb9n3.jpg",
-      "https://res.cloudinary.com/xv01jkbw/image/upload/photos/kladbische-3.jpg",
     ],
     confidence: true,
   },
