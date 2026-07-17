@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 export default function WelcomeNote({
   setShowIntro,
 }: {
@@ -59,9 +60,12 @@ export default function WelcomeNote({
         </button>
       </div>
 
-      <button
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1 }} // Появляется с небольшой задержкой
         onClick={() => setShowIntro(true)}
-        className="md:hidden fixed bottom-[calc(70vh+1rem)] right-5 z-[1001] w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-full shadow-lg flex items-center justify-center text-[#5c3a1e] active:scale-95"
+        className="fixed top-4 left-4 md:top-6 md:left-6 z-[1001] w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-full shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] active:scale-95 transition-colors backdrop-blur-sm"
         aria-label="Показать инструкцию"
       >
         <svg
@@ -78,7 +82,7 @@ export default function WelcomeNote({
           <line x1="12" y1="16" x2="12" y2="12" />
           <line x1="12" y1="8" x2="12.01" y2="8" />
         </svg>
-      </button>
+      </motion.button>
     </>
   );
 }

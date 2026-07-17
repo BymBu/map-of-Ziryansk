@@ -28,12 +28,13 @@ export default function PanoramaModal({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const viewerRef = useRef<any>(null);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Управление зумом через API Pannellum
+  // Управление зумом
   const handleZoomIn = () => {
     if (viewerRef.current) {
       const currentHfov = viewerRef.current.getHfov();
-      viewerRef.current.setHfov(Math.max(40, currentHfov - 20), 500); // Плавный зум за 500мс
+      viewerRef.current.setHfov(Math.max(40, currentHfov - 20), 500);
     }
   };
 
@@ -44,10 +45,8 @@ export default function PanoramaModal({
     }
   };
 
-  // Переключение автовращения
   const toggleAutoRotate = () => {
     if (!viewerRef.current) return;
-
     if (isAutoRotating) {
       viewerRef.current.stopAutoRotate();
       setIsAutoRotating(false);
@@ -59,6 +58,11 @@ export default function PanoramaModal({
 
   useEffect(() => {
     if (!isVisible || !containerRef.current || !src) return;
+
+    setIsLoading(true);
+    
+    // Таймер безопасности: если onLoad не сработает, уберем спиннер через 3 сек
+    const safetyTimer = setTimeout(() => setIsLoading(false), 3000);
 
     const checkPannellum = setInterval(() => {
       if (typeof window !== "undefined" && window.pannellum?.viewer) {
@@ -73,34 +77,30 @@ export default function PanoramaModal({
           type: "equirectangular",
           panorama: src,
           autoLoad: true,
-
-          // ОТКЛЮЧАЕМ РОДНЫЕ КОНТРОЛЫ
           showControls: false,
           showZoomCtrl: false,
           showFullscreenCtrl: false,
-
           mouseZoom: true,
           draggable: true,
           keyboardZoom: true,
-
           hfov: 80,
           minHfov: 40,
           maxHfov: 120,
-
           haov: 360,
           vaov: 180,
           vOffset: 0,
-
-          minYaw: -160, // Левая граница (половина от 320 со знаком минус)
-          maxYaw: 160, // Правая граница (половина от 320)
-
+          minYaw: -160,
+          maxYaw: 160,
           autoRotate: -1,
           autoRotateInactivityDelay: 3000,
           friction: 0.15,
-
           strings: {
             loadButtonLabel: "Загрузить",
             loadingLabel: "Загрузка...",
+          },
+          onLoad: () => {
+            setIsLoading(false);
+            clearTimeout(safetyTimer);
           },
         });
 
@@ -110,6 +110,7 @@ export default function PanoramaModal({
 
     return () => {
       clearInterval(checkPannellum);
+      clearTimeout(safetyTimer);
       if (viewerRef.current) {
         viewerRef.current.destroy();
         viewerRef.current = null;
@@ -133,17 +134,27 @@ export default function PanoramaModal({
       className="fixed inset-0 z-[9999] bg-black flex flex-col"
       onClick={onClose}
     >
+      {/* Индикатор загрузки */}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none bg-black/50">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-[#8b5a2b] border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-[#e3d5b8] font-serif animate-pulse">Загрузка панорамы...</p>
+          </div>
+        </div>
+      )}
+
       {/* Контейнер панорамы */}
       <div
         ref={containerRef}
-        className="flex-1 w-full cursor-grab active:cursor-grabbing relative"
+        className={`flex-1 w-full cursor-grab active:cursor-grabbing relative transition-opacity duration-700 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
         onClick={(e) => e.stopPropagation()}
       />
 
-      {/*  КАСТОМНЫЙ UI УПРАВЛЕНИЯ */}
+      {/* КАСТОМНЫЙ UI УПРАВЛЕНИЯ */}
       <div
         className="absolute top-4 right-4 z-10 flex flex-col gap-2"
-        onClick={(e) => e.stopPropagation()} //  Блокируем закрытие для всей панели управления
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -159,7 +170,7 @@ export default function PanoramaModal({
             onClick={(e) => {
               e.stopPropagation();
               handleZoomIn();
-            }} // Останавливаем всплытие
+            }}
             className="w-10 h-10 flex items-center justify-center text-[#e3d5b8] hover:bg-[#8b5a2b] hover:text-white transition-colors border-b border-[#8b5a2b]/30 text-xl font-serif"
             title="Приблизить (+)"
           >
@@ -169,7 +180,7 @@ export default function PanoramaModal({
             onClick={(e) => {
               e.stopPropagation();
               handleZoomOut();
-            }} // 🔒 Останавливаем всплытие
+            }}
             className="w-10 h-10 flex items-center justify-center text-[#e3d5b8] hover:bg-[#8b5a2b] hover:text-white transition-colors text-xl font-serif"
             title="Отдалить (-)"
           >
@@ -182,7 +193,7 @@ export default function PanoramaModal({
           onClick={(e) => {
             e.stopPropagation();
             toggleAutoRotate();
-          }} // 🔒 Останавливаем всплытие
+          }}
           className={`w-10 h-10 flex items-center justify-center rounded-full border shadow-lg backdrop-blur-sm transition-all ${
             isAutoRotating
               ? "bg-[#8b5a2b] text-[#f4e4bc] border-[#d4af37]"
@@ -194,52 +205,41 @@ export default function PanoramaModal({
         </button>
       </div>
 
-      {/*  ИНСТРУКЦИЯ ВНИЗУ  */}
+      {/* ИНСТРУКЦИЯ И НАЗВАНИЕ */}
       <div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 w-full max-w-md px-4 pointer-events-none flex items-center flex-col"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 w-full max-w-md px-4  flex items-center flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-[#f4e4bc] mb-2 font-serif text-sm opacity-90 drop-shadow-md bg-black/30 inline-block px-3 py-1 rounded-full backdrop-blur-sm">
+        <p className="text-[#f4e4bc] mb-3 font-serif text-sm opacity-90 drop-shadow-md bg-black/50 inline-block px-4 py-1.5 rounded-full backdrop-blur-sm border border-[#8b5a2b]/30">
           {alt}
         </p>
-        <div className="bg-[#f4e4bc]/95 backdrop-blur-md border-2 border-[#8b5a2b] rounded-lg shadow-2xl p-4 text-[#3e2723] text-center">
-          <h3 className="font-serif font-bold text-[#5c3a1e] text-xs uppercase tracking-wider mb-2">
-            Как управлять видом
-          </h3>
-          <div className="grid grid-cols-2 gap-3 text-[15px] leading-tight font-light opacity-90">
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-[20px]">👆</span>
-              <p>
-                Тяни мышью или пальцем,
-                <br />
-                чтобы осмотреться
-              </p>
+
+        <div className="bg-[#1a1612]/90 backdrop-blur-md border border-[#8b5a2b] rounded-lg shadow-2xl p-3 text-[#e3d5b8] text-center relative">
+           <div className="grid grid-cols-4 gap-x-4 gap-y-2 text-[13px] leading-tight font-light opacity-80">
+            <div className="flex items-center gap-2 justify-end">
+              <span className="text-[16px]">👆</span>
+              <p>Тяни для обзора</p>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-[15px]">🤏</span>
-              <p>
-                Щипок двумя пальцами
-                <br />
-                или колесико для зума
-              </p>
+            <div className="flex items-center gap-2 justify-start">
+              <span className="text-[16px]">🤏</span>
+              <p>Щипок для зума</p>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-[15px]">⌨️</span>
-              <p>
-                Стрелки на клавиатуре
-                <br />
-                для плавного поворота
-              </p>
+            <div className="flex items-center gap-2 justify-end">
+              <span className="text-[16px]">⌨️</span>
+              <p>Стрелки для поворота</p>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-[15px]">↻</span>
-              <p>
-                Кнопка справа сверху
-                <br />
-                включает автовращение
-              </p>
+            <div className="flex items-center gap-2 justify-start">
+              <span className="text-[16px]">↻</span>
+              <p>Авто-вращение</p>
             </div>
           </div>
+          
+          <button 
+            onClick={onClose}
+            className="mt-3 w-full py-1.5 bg-[#8b5a2b]/20 hover:bg-[#8b5a2b] text-[#e3d5b8] text-xs uppercase tracking-wider rounded transition-colors border border-[#8b5a2b]/50"
+          >
+            Закрыть панораму
+          </button>
         </div>
       </div>
     </div>
