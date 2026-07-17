@@ -23,6 +23,11 @@ export default function RootLayout({
       lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* ЛОКАЛЬНЫЕ ФАЙЛЫ ИЗ public/vendor/pannellum/ для панорамы*/}
+        <link rel="stylesheet" href="/vendor/pannellum/pannellum.css" />
+        <script src="/vendor/pannellum/pannellum.js" defer />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

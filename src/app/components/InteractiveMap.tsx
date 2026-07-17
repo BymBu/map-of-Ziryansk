@@ -19,6 +19,7 @@ import { InvisibleMarker } from "./utils/InvisibleMarker";
 import IntroModal from "./IntroModal";
 import WelcomeNote from "./WelcomeNote";
 import { usePaperSound } from "../hooks/usePaperSound";
+import PanoramaModal from "./PanoramaModal";
 
 // Фикс иконок Leaflet в Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -33,14 +34,15 @@ L.Icon.Default.mergeOptions({
 
 export default function InteractiveMap() {
   const [showIntro, setShowIntro] = useState(true);
-  
-  // ✅ Два отдельных состояния
+
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null); // Для попапа
-  const [activeLocation, setActiveLocation] = useState<string | null>(null);   // Для LocationDetails
-  
+  const [activeLocation, setActiveLocation] = useState<string | null>(null); // Для LocationDetails
+
+  const [activePanorama, setActivePanorama] = useState<string | null>(null); // Для панорамы
+
   type MapMode = "default" | "topo-1988" | "topo-1982" | "ziryansk";
   const [mapMode, setMapMode] = useState<MapMode>("ziryansk");
-  
+
   const playPaperSound = usePaperSound();
 
   return (
@@ -55,15 +57,51 @@ export default function InteractiveMap() {
         className="z-0"
         minZoom={15}
         maxZoom={18}
-        maxBounds={[[52.24, 107.73], [52.29, 107.84]]}
+        maxBounds={[
+          [52.24, 107.73],
+          [52.29, 107.84],
+        ]}
         maxBoundsViscosity={0.5}
         zoomControl={false}
       >
-        <TileLayer attribution='&copy; <a href="https://www.esri.com">Esri</a>' url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
-        
-        {mapMode === "topo-1988" && <ImageOverlay url="/maps/topo-1988.jpg" bounds={[[52.235, 107.73], [52.295, 107.84]]} opacity={0.9} zIndex={20} />}
-        {mapMode === "topo-1982" && <ImageOverlay url="/maps/topo-1982.png" bounds={[[52.235, 107.71], [52.295, 107.83]]} opacity={0.9} zIndex={20} />}
-        {mapMode === "ziryansk" && <ImageOverlay url="/maps/ziryansk.png" bounds={[[52.241175, 107.707171], [52.283425, 107.85156]]} opacity={1} zIndex={20} />}
+        <TileLayer
+          attribution='&copy; <a href="https://www.esri.com">Esri</a>'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        />
+
+        {mapMode === "topo-1988" && (
+          <ImageOverlay
+            url="/maps/topo-1988.jpg"
+            bounds={[
+              [52.235, 107.73],
+              [52.295, 107.84],
+            ]}
+            opacity={0.9}
+            zIndex={20}
+          />
+        )}
+        {mapMode === "topo-1982" && (
+          <ImageOverlay
+            url="/maps/topo-1982.png"
+            bounds={[
+              [52.235, 107.71],
+              [52.295, 107.83],
+            ]}
+            opacity={0.9}
+            zIndex={20}
+          />
+        )}
+        {mapMode === "ziryansk" && (
+          <ImageOverlay
+            url="/maps/ziryansk.png"
+            bounds={[
+              [52.241175, 107.707171],
+              [52.283425, 107.85156],
+            ]}
+            opacity={1}
+            zIndex={20}
+          />
+        )}
 
         {/* Маркеры */}
         {locations.map((loc) => (
@@ -74,7 +112,7 @@ export default function InteractiveMap() {
             eventHandlers={{
               mouseover: (e) => {
                 setHoveredLocation(loc.id);
-                
+
                 requestAnimationFrame(() => {
                   requestAnimationFrame(() => {
                     e.target.openPopup();
@@ -87,11 +125,20 @@ export default function InteractiveMap() {
                 e.target.closePopup();
               },
               click: () => {
-                setActiveLocation(loc.id); 
-              }
+                if (loc.type === "panorama") {
+                  setActivePanorama(loc.id);
+                } else {
+                  setActiveLocation(loc.id);
+                }
+              },
             }}
           >
-            <Popup className="custom-scroll-popup" autoPan={false} keepInView={false} closeButton={false}>
+            <Popup
+              className="custom-scroll-popup"
+              autoPan={false}
+              keepInView={false}
+              closeButton={false}
+            >
               <AnimatedPopupContent
                 name={loc.name}
                 description={loc.description}
@@ -110,6 +157,17 @@ export default function InteractiveMap() {
         <LocationDetails
           location={locations.find((l) => l.id === activeLocation)!}
           onClose={() => setActiveLocation(null)}
+        />
+      )}
+
+      {activePanorama && (
+        <PanoramaModal
+          isVisible={!!activePanorama}
+          onClose={() => setActivePanorama(null)}
+          src={
+            locations.find((l) => l.id === activePanorama)?.panoramaSrc || ""
+          }
+          alt={locations.find((l) => l.id === activePanorama)?.name || ""}
         />
       )}
     </div>

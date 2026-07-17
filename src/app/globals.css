@@ -139,3 +139,75 @@ body {
   z-index: 50;
 }
 
+/* Кастомный хотспот-перо  Панорама*/
+.custom-hotspot {
+  width: 32px !important;
+  height: 32px !important;
+  background: rgba(26, 22, 18, 0.9) !important;
+  border: 2px solid #8b5a2b !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.custom-hotspot:hover {
+  background: #8b5a2b !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 15px rgba(139, 90, 43, 0.6) !important;
+}
+
+/* Иконка внутри хотспота (SVG через CSS) */
+.custom-hotspot::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4e4bc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19l7-7 3 3-7 7-3-3z'/%3E%3Cpath d='M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z'/%3E%3Cpath d='M2 2l7.586 7.586'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Тултип хотспота */
+.pnlm-hotspot.pnlm-info div {
+  background: rgba(26, 22, 18, 0.95) !important;
+  color: #e3d5b8 !important;
+  border: 1px solid #8b5a2b !important;
+  font-family: var(--font-geist-sans) !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}
+
+/* Стили для кнопок управления Pannellum */
+.pnlm-zoom-controls {
+  background: rgba(26, 22, 18, 0.8) !important;
+  border: 1px solid #8b5a2b !important;
+  border-radius: 8px !important;
+  padding: 4px !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.pnlm-zoom-in, .pnlm-zoom-out {
+  width: 36px !important;
+  height: 36px !important;
+  background: transparent !important;
+  color: #e3d5b8 !important;
+  font-size: 20px !important;
+  line-height: 36px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s !important;
+}
+
+.pnlm-zoom-in:hover, .pnlm-zoom-out:hover {
+  background: #8b5a2b !important;
+  color: #f4e4bc !important;
+}
+
+/* Убираем стандартную тень и делаем кнопки компактнее */
+.pnlm-control {
+  box-shadow: none !important;
+  margin: 2px 0 !important;
+}

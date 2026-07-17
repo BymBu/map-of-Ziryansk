@@ -20,7 +20,6 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
           transition={{ duration: 0.6 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md"
         >
-          {/* Основной контейнер свитка */}
           <motion.div
             initial={{ scale: 0.95, y: 30, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -61,10 +60,9 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
               }
             `}</style>
 
-            {/* СКРОЛЛИРУЕМАЯ ОБЛАСТЬ КОНТЕНТА */}
             <div className="absolute inset-x-0 top-0 bottom-[72px] overflow-y-auto scrollbar-vintage p-6 md:p-10">
               <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-                {/* ЛЕВАЯ КОЛОНКА: Визитка */}
+                {/* ЛЕВАЯ КОЛОНКА */}
                 <div className="w-full md:w-1/3 shrink-0">
                   <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#4a2f18] mb-1 tracking-wide">
                     Зырянск
@@ -78,6 +76,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                       src="/me.png"
                       alt="Вячеслав"
                       fill
+                      sizes="auto"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-full pointer-events-none" />
@@ -88,8 +87,8 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                       Меня зовут Вячеслав. Мне 18 лет. Я FullStack Web
                       разработчик. <br />Я вырос здесь. Летом 2026 года я взял
                       карты и пошел искать то, что осталось от старой жизни.
-                      Остатки ГЭС, кости у дороги, землянки в Утатах, надпись
-                      «МИРУ МИР» и прочие следы истории.
+                      Остатки ГЭС, кости у дороги, землянки в Утатах, деревню
+                      Ловцова, и прочие следы истории, которые сохранила земля.
                     </p>
                     <p className="font-cusaiv text-base md:text-lg italic text-[#5c3a1e] leading-snug">
                       для лучшего опыта используйте компьютер
@@ -127,10 +126,10 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                   </div>
                 </div>
 
-                {/* ПРАВАЯ КОЛОНКА: История села */}
+                {/* ПРАВАЯ КОЛОНКА: История */}
                 <div className="w-full md:w-2/3 prose prose-stone max-w-none">
                   <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#4a2f18] border-b-2 border-[#8b5a2b]/40 pb-3 mb-6 flex items-center gap-3">
-                    <span className="text-[#8b5a2b]"></span> История села
+                    История села
                   </h2>
 
                   <div className="space-y-5 text-[#2c1e12] leading-[1.7] font-light text-base md:text-lg lg:text-xl font-cusaiv">
@@ -145,128 +144,384 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
 
                     <p>
                       До того как село стало единым, на его месте было три
-                      отдельные деревни. Зырянская стояла на левом берегу
-                      Итанцы. Утаты (Утатайская) — на правом, возвышенном
-                      берегу. Ловцова — тоже на левом, у высохшего озера. Они
-                      жили каждая своей жизнью, но потом слились в одно село.
-                      Ловцова исчезла почти бесследно, Утаты — оставили после
-                      себя поле, крапиву и землянки, которые я нашёл в 2026
-                      году.
+                      отдельные деревни: Зырянская — на левом берегу Итанцы,
+                      Утаты — на правом, возвышенном берегу, и Ловцова — тоже на
+                      левом, у высохшего озера. Название Ловцова, по рассказам,
+                      произошло от фамилии местного жителя. Во время сильного
+                      ливня на Утатах река вышла из берегов — ворота домов
+                      уносило водой. Тогда жители Утатов перебрались в Зырянск.
+                    </p>
+
+                    {/* ГИМН ЗЫРЯНСКА */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "3 / 4" }}
+                      >
+                        <Image
+                          src="/photos/gimn-zyryanska.jpg"
+                          alt="Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-contain rounded"
+                          unoptimized
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Гимн Зырянска. Слова П. Павловой, музыка Н. Богданова
+                      </p>
+                    </div>
+
+                    <p>
+                      В XIX веке на горе Кынгора стояла часовня Параскевы
+                      Пятницы, а в Утатах — часовня Николая Чудотворца. Ещё одна
+                      Никольская часовня стояла на месте нынешней
+                      администрации. Все три были разрушены после революции.
+                      Сейчас на Кынгоре — крест, установленный Геннадием
+                      Севергиным.
                     </p>
 
                     <p>
-                      В XIX веке на горе Кынгора стояла часовня — в архивном
-                      документе 1817 года она числится как часовня Параскевы
-                      Пятницы. В исчезнувшем селе Утаты была часовня Николая
-                      Чудотворца. И ещё одна Никольская часовня стояла на месте,
-                      где сейчас администрация. Все три были разрушены после
-                      революции. Сейчас на Кынгоре стоит крест, который поставил
-                      Геннадий Севергин в 2000-х.
+                      В 1916 году в Зырянске проживал 1061 житель. Село стало
+                      центром колхоза «Путь социализма», а позже — совхоза
+                      «Зырянский». Одна из улиц носит имя председателя колхоза
+                      Артамона Абакумовича Хмелева.
                     </p>
 
-                    <p>
-                      В 1916 году в Зырянске проживал 1061 житель. В советское
-                      время село стало центром колхоза «Путь социализма». В 1934
-                      году объединились коммуна «Революция» (30 дворов) и артель
-                      «Верный путь» (90 дворов). В 1957 году колхоз слили с
-                      соседними сёлами в «Путь к коммунизму». Одна из улиц села
-                      носит имя председателя колхоза Артамона Абакумовича
-                      Хмелева.
-                    </p>
+                    {/* ФОТО: СОБРАНИЕ КОЛХОЗА */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "4 / 3" }}
+                      >
+                        <Image
+                          src="/photos/ziryansk-1.jpg"
+                          alt="Собрание колхоза в Зырянске. 1930-е годы. В первом ряду — Баталов Иван Никанорович"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Собрание колхоза в Зырянске. В первом ряду — Баталов
+                        Иван Никанорович
+                      </p>
+                    </div>
 
                     <p>
-                      В годы Великой Отечественной войны колхоз «Путь
-                      социализма» выдал семьям военнослужащих 86 пар ичижных
-                      головок, шерсти на 120 пар тёплых чулков и 40 пар обуви.
-                      Но многие семьи, особенно многодетные, голодали. Отощавшую
-                      скотину нельзя было забить, нельзя было есть мясо павших
-                      от голода животных. По ночам матери ходили на
-                      скотомогильники, несли домой то, что удалось отрубить,
-                      варили и кормили детей, спасая их от смерти. Ничего нельзя
-                      было взять с колхозных полей.
+                      В годы войны колхоз «Путь социализма» выдал семьям
+                      военнослужащих 86 пар ичижных головок, шерсти на 120 пар
+                      тёплых чулков и 40 пар обуви. Но многие семьи голодали.
+                      Отощавшую скотину нельзя было забить. По ночам матери
+                      ходили на скотомогильники, несли домой то, что удалось
+                      отрубить, варили и кормили детей.
                     </p>
 
+                    {/* КАРТИНЫ ХУДОЖНИКА ПУШКАРЁВА */}
+                    <div className="my-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                        <div
+                          className="relative w-full"
+                          style={{ aspectRatio: "4 / 3" }}
+                        >
+                          <Image
+                            src="/photos/pushkarev-zyryansk.jpg"
+                            alt="Картина Семёна Пушкарёва «Зырянск», 1975 г."
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover rounded"
+                          />
+                        </div>
+                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                          С. Пушкарёв. Зырянск, 1975 г.
+                        </p>
+                      </div>
+                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                        <div
+                          className="relative w-full"
+                          style={{ aspectRatio: "4 / 3" }}
+                        >
+                          <Image
+                            src="/photos/ziryansk-3.jpg"
+                            alt="Картина Семёна Пушкарёва «Старая мельница», 1938 г."
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover rounded"
+                          />
+                        </div>
+                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                          С. Пушкарёв. Старая мельница, 1938 г.
+                        </p>
+                      </div>
+                      <div className="rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                        <div
+                          className="relative w-full"
+                          style={{ aspectRatio: "4 / 3" }}
+                        >
+                          <Image
+                            src="/photos/ges-6.jpg"
+                            alt="Картина Семёна Пушкарёва «Память детства», 1995 г."
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover rounded"
+                          />
+                        </div>
+                        <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                          С. Пушкарёв. Память детства, май 1995 г.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* ФОТО ХУДОЖНИКА */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2 max-w-sm mx-auto">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "4 / 3" }}
+                      >
+                        <Image
+                          src="/photos/pushkarev-photo.jpg"
+                          alt="Семён Иванович Пушкарёв — художник-любитель из Зырянска"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 30vw"
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Семён Иванович Пушкарёв, художник-любитель (на фото
+                        справа)
+                      </p>
+                    </div>
+
                     <p>
-                      После войны началось восстановление. В 1950 году завершили
-                      строительство второй очереди Зырянской ГЭС, и
-                      электрическое освещение пришло в Ангыр, Батурино и
-                      Нестерово. Станция была сложным гидротехническим
-                      сооружением — для наполнения водохранилища спрямили устье
-                      реки Ангыр. Директором был Георгий Михайлович Юртвенсон.
-                      Турбина работала недолго — в 1956 году её заменили на
-                      дизельную, а в начале 1960-х село подключили к Братской
-                      ГЭС.
+                      После войны в 1950 году завершили строительство второй
+                      очереди Зырянской ГЭС. Свет пришёл в Ангыр, Батурино и
+                      Нестерово. ГЭС была сложным гидротехническим сооружением
+                      — спрямили устье Ангыра. Директором был Георгий Михайлович
+                      Юртвенсон. В 1956 году турбину заменили на дизельную, а в
+                      1960-х село подключили к Братской ГЭС. На ГЭС также была
+                      мельница.
                     </p>
+
+                    {/* ПРАВЛЕНИЕ КОЛХОЗА */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "4 / 3" }}
+                      >
+                        <Image
+                          src="/photos/ziryansk-2.jpg"
+                          alt="Правление колхоза в Зырянске. 1930-е годы"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Правление колхоза в Зырянске. 1930-е годы
+                      </p>
+                    </div>
 
                     <p>
                       На пике развития совхоз «Зырянский» имел 508 коров, 1619
-                      голов молодняка и 103 лошади. До революции земли села
-                      давали 8052 гектара зерновых. После развала совхоза посевы
-                      сократились в разы. В 2004 году засеяли всего 300
-                      гектаров. Почти всё, что создавалось трудом прибайкальцев
-                      за десятилетия, рухнуло в 1990-е — не от вражеских
-                      снарядов, а от «реформ». Взрослые люди с университетским и
-                      академическим образованием поставили крест на том, что в
-                      поте лица создавали их отцы и деды.
+                      голов молодняка и 103 лошади. До революции сеяли 8052
+                      гектара. В 2004 году — всего 300. Всё рухнуло в 1990-е —
+                      не от снарядов, а от «реформ».
+                    </p>
+
+                    {/* АРХИВНЫЕ ДОКУМЕНТЫ */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
+                          <div
+                            className="relative w-full"
+                            style={{ aspectRatio: "4 / 3" }}
+                          >
+                            <Image
+                              src="/photos/trud-book.jpg"
+                              alt="Трудовая книжка работницы совхоза «Зырянский»"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover rounded"
+                            />
+                          </div>
+                          <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
+                            Трудовая книжка — записи о работе в совхозе
+                          </p>
+                        </div>
+                        <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
+                          <div
+                            className="relative w-full"
+                            style={{ aspectRatio: "4 / 3" }}
+                          >
+                            <Image
+                              src="/photos/salary-1.jpg"
+                              alt="Поощрения и достижения работников совхоза"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover rounded"
+                            />
+                          </div>
+                          <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
+                            Поощрения работников за труд на фермах
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-3 italic">
+                        Трудовая книжка и вкладыш с поощрениями — документы,
+                        показывающие, как люди работали в совхозе «Зырянский»
+                      </p>
+                    </div>
+
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
+                          <div
+                            className="relative w-full"
+                            style={{ aspectRatio: "3 / 4" }}
+                          >
+                            <Image
+                              src="/photos/sber-1.jpg"
+                              alt="Сберегательная книжка Сбербанка СССР"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover rounded"
+                            />
+                          </div>
+                          <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
+                            Сберегательная книжка Сбербанка
+                          </p>
+                        </div>
+                        <div className="rounded-lg border border-[#8b5a2b]/20 p-1 bg-[#f4e4bc]">
+                          <div
+                            className="relative w-full"
+                            style={{ aspectRatio: "3 / 4" }}
+                          >
+                            <Image
+                              src="/photos/sber-2.jpg"
+                              alt="Сберегательная книжка СССР"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover rounded"
+                            />
+                          </div>
+                          <p className="text-base text-center text-[#5c3a1e] mt-1 italic">
+                            Сберегательная книжка СССР
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-3 italic">
+                        Сберегательные книжки — свидетельства того, как люди
+                        копили и жили в советское время
+                      </p>
+                    </div>
+
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "4 / 3" }}
+                      >
+                        <Image
+                          src="/photos/order.jpg"
+                          alt="Ордер на выдачу квартиры рабочему совхоза «Зырянский»"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Ордер на выдачу квартиры рабочему совхоза. Жильё давали
+                        тем, кто работал
+                      </p>
+                    </div>
+
+                    {/* РУКОПИСНАЯ КАРТА СОВХОЗА */}
+                    <div className="my-6 rounded-lg overflow-hidden shadow-lg border-2 border-[#8b5a2b]/30 bg-[#d4c5a9] p-2">
+                      <div
+                        className="relative w-full"
+                        style={{ aspectRatio: "4 / 3" }}
+                      >
+                        <Image
+                          src="/photos/map-sovxoz.jpg"
+                          alt="Рукописная карта совхоза «Зырянский», нарисована от руки"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-contain rounded"
+                        />
+                      </div>
+                      <p className="text-base text-center text-[#5c3a1e] mt-2 italic">
+                        Карта совхоза «Зырянский», нарисованная от руки. На ней
+                        обозначены поля, фермы и границы
+                      </p>
+                    </div>
+
+                    <p>
+                      Вокруг села были свинотоварная и молочно-товарная фермы.
+                      СТФ давно не работает, от неё остались бетонные плиты. МТФ
+                      держалась дольше, но сгорела.
                     </p>
 
                     <p>
-                      Вокруг села были свинотоварная (СТФ) и молочно-товарная
-                      (МТФ) фермы. СТФ давно не работает, от неё остались
-                      бетонные плиты. МТФ держалась дольше, но сгорела — теперь
-                      там пепелище.
+                      Из Зырянска на фронт ушло 149 человек, 67 из них погибли.
+                      Среди известных земляков — Колмаков Павел Антонович,
+                      Почётный гражданин Прибайкальского района и Бурятии;
+                      Хмелев Алексей Иванович, кавалер двух орденов Ленина;
+                      Иван Шульгин, полковник КГБ; Тарасов Дмитрий Семенович,
+                      главный бухгалтер Улан-Удэнского авиазавода.
                     </p>
 
                     <p>
-                      На топографической карте 1988 года в районе Утатов
-                      отмечено кладбище. Местные говорят, что ничего там не
-                      было. Я поставил на это место вопросительный знак —
-                      возможно, ошибка картографов, а может, могилы просто
-                      забыли.
+                      На карте 1988 года в районе Утатов отмечено кладбище. По
+                      слухам, там был скотомогильник или даже место расстрела —
+                      точных данных нет. Я поставил на это место вопросительный
+                      знак.
                     </p>
 
                     <p>
-                      Есть ещё старое кладбище — оно действует до сих пор. Ближе
-                      ко входу лежат недавние могилы, а дальше — едва заметные
-                      бугорки. Там хоронили поколения, которых уже никто не
-                      помнит. Кости у дороги — подтверждение того, что дорога
-                      прошла прямо через старые захоронения. Их возраст —
-                      примерно 100–200 лет.
+                      Есть и старое кладбище — оно действует до сих пор. Ближе
+                      ко входу — свежие могилы, дальше — едва заметные бугорки.
+                      Кости у дороги — подтверждение того, что дорога прошла
+                      через захоронения. Их возраст — 100–200 лет.
                     </p>
 
                     <p>
-                      Существовал и эвенкийский хутор — он стоял напротив моего
-                      дома, в лесу. В 1980-х ещё были видны остатки домов.
-                      Сейчас там поле. Сведений о названии хутора не
-                      сохранилось.
-                    </p>
-
-                    <p>
-                      На новом кладбище есть надпись «МИРУ МИР», высаженная
-                      деревьями. Часть букв не прижилась — теперь это
-                      недописанное послание. Я дорисовал их на карте чёрным,
-                      чтобы они снова стали видны.
-                    </p>
-
-                    <p>
-                      В 2026 году я встретил здесь религиозную общину. У них
-                      кнопочные телефоны и вера в индийского гуру Саи Баба. На
-                      карте я ничего не отмечал, чтобы никого не обидеть.
+                      В 2026 году я встретил религиозную общину. У них кнопочные
+                      телефоны и вера в индийского гуру Саи Баба. На карте я
+                      ничего не отмечал.
                     </p>
 
                     <p>
                       Вся эта история — не из учебников. Я собирал её по
-                      рассказам старожилов, по картам, по обрывкам газет и по
-                      тому, что сам нашёл, пока ходил по полям. Это карта не
-                      официальной истории, а той, которую я увидел своими
-                      глазами.
+                      рассказам старожилов, по картам, по обрывкам газет, по
+                      книге ⟪Итанца⟫ (Виталий Помулев) и по тому, что сам нашёл
+                      в полях. Это карта не официальной истории, а той, которую
+                      я увидел своими глазами.
                     </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#8b5a2b]/30 text-sm md:text-base text-[#3e2723] text-center">
+                    <p className="mb-2 font-bold uppercase tracking-wider text-[#5c3a1e] text-[14px] md:text-xs">
+                      Благодарность
+                    </p>
+                    <p className="leading-relaxed opacity-90 text-xs md:text-sm">
+                      Хочу выразить благодарность в помощи создания
+                      интерактивной карты моему брату Максиму, родственникам-старожилам, библиотеке, школе за материал.
+                    </p>
+                    <div className="mt-2 space-y-1 font-mono text-[14px] md:text-xxs text-[#5c3a1e]">
+                      <p>
+                        Другой мой проект - 3D Байкал:{" "}
+                        <a
+                          href="https://it-baikal.vercel.app/"
+                          className="underline hover:text-[#8b5a2b]"
+                        >
+                          Ссылка
+                        </a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* КНОПКА: ВСЕГДА ПРИБИТА К НИЗУ НА ВСЮ ШИРИНУ */}
             <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 bg-gradient-to-t from-[#f4e4bc] via-[#f4e4bc] to-transparent z-20">
               <button
                 onClick={() => {

@@ -87,7 +87,7 @@ export default function LocationDetails({
               <path d="M2 2l7.586 7.586" />
               <circle cx="11" cy="11" r="2" />
             </svg>
-            <h2 className="text-xl md:text-2xl font-serif font-bold leading-tight text-[#f4e4bc] truncate">
+            <h2 className="text-xl md:text-2xl font-serif font-bold leading-tight text-[#f4e4bc] ">
               {location.name}
             </h2>
           </div>
