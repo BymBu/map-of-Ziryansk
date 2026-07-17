@@ -2,7 +2,14 @@ export interface LocationPoint {
   id: string;
   name: string;
   coords: [number, number]; // [lat, lng]
-  type: "history" | "mystery" | "nature" | "sect";
+  type:
+    | "history"
+    | "mystery"
+    | "nature"
+    | "sect"
+    | "current"
+    | "panorama"
+    | "main";
   description: string;
   images: string[]; // Пути к фото в public
   confidence?: boolean; // true - уверен, false - вопросительный знак
