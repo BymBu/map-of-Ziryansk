@@ -8,7 +8,7 @@ export interface LocationPoint {
   confidence?: boolean; // true - уверен, false - вопросительный знак
 }
 
-export const locations: LocationPoint = [
+export const locations: LocationPoint[] = [
   {
     id: "Kyngora",
     name: "Кынгора",
