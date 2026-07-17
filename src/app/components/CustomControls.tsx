@@ -1,10 +1,10 @@
 import { useMap } from "react-leaflet";
-
+import { Dispatch, SetStateAction } from "react";
 export default function CustomControls({
   setMapMode,
 }: {
   mapMode: string;
-  setMapMode: (mode: string) => void;
+  setMapMode: Dispatch<SetStateAction<string>>; 
 }) {
   const map = useMap();
 

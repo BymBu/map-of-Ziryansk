@@ -10,6 +10,7 @@ interface PanoramaModalProps {
 }
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Window {
     pannellum: {
       viewer: (container: HTMLElement, config: any) => any;
@@ -24,6 +25,7 @@ export default function PanoramaModal({
   alt,
 }: PanoramaModalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const viewerRef = useRef<any>(null);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
 
@@ -240,7 +242,6 @@ export default function PanoramaModal({
           </div>
         </div>
       </div>
-
     </div>
   );
 }

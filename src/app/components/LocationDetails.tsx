@@ -1,14 +1,14 @@
-import Image from "next/image";
 import { useState } from "react";
 import PhotoModal from "./PhotoModal";
 import { motion, AnimatePresence } from "framer-motion";
 import CloudinaryImage from "./CloudinaryImage";
+import { LocationPoint } from "../../../data/locations";
 
 export default function LocationDetails({
   location,
   onClose,
 }: {
-  location: any;
+  location: LocationPoint;
   onClose: () => void;
 }) {
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
@@ -115,7 +115,7 @@ export default function LocationDetails({
         </p>
 
         {/* Галерея артефактов */}
-        {location.images?.length > 0 ? (
+        {location.images && location.images.length > 0 ? (
           <div className="space-y-3 relative z-10 pb-4">
             <div className="text-[12px] uppercase tracking-widest text-[#5c3a1e] font-bold border-t border-[#3e2723]/40 pt-3 mt-4">
               Архивные материалы

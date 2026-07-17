@@ -11,7 +11,6 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { locations } from "../../../data/locations";
 import { useState } from "react";
-import Image from "next/image";
 import AnimatedPopupContent from "./AnimatedPopupContent";
 import CustomControls from "./CustomControls";
 import LocationDetails from "./LocationDetails";
@@ -21,16 +20,6 @@ import WelcomeNote from "./WelcomeNote";
 import { usePaperSound } from "../hooks/usePaperSound";
 import PanoramaModal from "./PanoramaModal";
 
-// Фикс иконок Leaflet в Next.js
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-});
 
 export default function InteractiveMap() {
   const [showIntro, setShowIntro] = useState(true);
@@ -141,7 +130,7 @@ export default function InteractiveMap() {
             >
               <AnimatedPopupContent
                 name={loc.name}
-                description={loc.description}
+                description={loc.description || ""}
                 isVisible={hoveredLocation === loc.id}
                 hasPhotos={!!loc.images?.length}
               />
@@ -149,7 +138,10 @@ export default function InteractiveMap() {
           </Marker>
         ))}
 
-        <CustomControls mapMode={mapMode} setMapMode={setMapMode} />
+        <CustomControls
+          mapMode={mapMode}
+          setMapMode={(mode) => setMapMode(mode as MapMode)}
+        />
       </MapContainer>
 
       {/* GUI Overlay - открывается ТОЛЬКО по клику */}
