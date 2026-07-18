@@ -2,12 +2,10 @@ import { motion } from "framer-motion";
 
 export default function AnimatedPopupContent({
   name,
-  description,
   isVisible,
   hasPhotos,
 }: {
   name: string;
-  description: string;
   isVisible: boolean;
   hasPhotos?: boolean;
 }) {
@@ -20,11 +18,17 @@ export default function AnimatedPopupContent({
           : { opacity: 0, scale: 0.8, y: 10 }
       }
       transition={{ type: "spring", stiffness: 150, damping: 40 }}
+      //  ЖЕСТКИЙ СБРОС ШРИФТА ДЛЯ МОБИЛЬНЫХ ПОПАПОВ
+      style={{ 
+        fontFamily: "Georgia, 'Times New Roman', serif !important",
+        fontFeatureSettings: "normal !important"
+      }}
+      className="text-[#2c1e12]"
     >
-      <h3>{name}</h3>
-      {/* <p>{description}</p> */}
+      <h3 className="text-lg font-bold mb-1">{name}</h3>
+      
       {hasPhotos && (
-        <div className="mt-3 pt-2 border-t border-dashed border-[#8b5a2b]/40 flex items-center gap-2 text-xxl text-[#8b5a2b] ">
+        <div className="mt-3 pt-2 border-t border-dashed border-[#8b5a2b]/40 flex items-center gap-2 text-sm text-[#8b5a2b]">
           <svg
             width="14"
             height="14"
