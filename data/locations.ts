@@ -330,7 +330,7 @@ export const locations: LocationPoint[] = [
   },
   {
     id: "kapusta-pole",
-    name: "Капустные поля (бывшие)",
+    name: "Парники (бывшие)",
     coords: [52.266015, 107.784059],
     type: "history",
     description:
