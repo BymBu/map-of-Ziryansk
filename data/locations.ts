@@ -11,8 +11,8 @@ export interface LocationPoint {
     | "panorama"
     | "main";
   description?: string;
-  images?: string[]; 
-  panoramaSrc?: string; 
+  images?: string[];
+  panoramaSrc?: string;
   confidence?: boolean;
 }
 
@@ -234,16 +234,16 @@ export const locations: LocationPoint[] = [
     images: [],
     confidence: true,
   },
-  {
-    id: "lovcova",
-    name: "Ловцова — исчезнувшая деревня",
-    coords: [52.246793, 107.784152],
-    type: "history",
-    description:
-      "Ловцова — ещё одна деревня, которая когда-то существовала рядом с Зырянском. Она стояла на левом берегу Итанцы, напротив Утатов, примерно в полутора верстах от Зырянска. Рядом было небольшое озеро, которое со временем пересохло. Точное местоположение утеряно — она слишком далеко, чтобы быть частью села, и слишком исчезнувшей, чтобы о ней помнили. Сейчас там — поле, и никто уже не скажет, где стояли дома.",
-    images: [],
-    confidence: false,
-  },
+{
+  id: "lovcova",
+  name: "Ловцова — исчезнувшая деревня",
+  coords: [52.246793, 107.784152],
+  type: "history",
+  description:
+    "Ловцова — ещё одна деревня, которая когда-то существовала рядом с Зырянском. Она стояла на левом берегу Итанцы, напротив Утатов, примерно в полутора верстах от Зырянска. Рядом было небольшое озеро, которое со временем пересохло. Точное местоположение утеряно — она слишком далеко, чтобы быть частью села, и слишком исчезнувшей, чтобы о ней помнили. Сейчас там — поле, и никто уже не скажет, где стояли дома. По рассказам, в 1960-х годах в этих краях упал почтовый самолёт — он летел в туман и врезался в гору. Мой дядя ходил смотреть на место крушения. Самолёт был деревянным, с алюминиевой рамой. Сейчас на этом месте ничего не напоминает о той истории — только трава и тишина.",
+  images: [],
+  confidence: true,
+},
   {
     id: "evenki-khutor",
     name: "Эвенкийский хутор",
@@ -657,7 +657,7 @@ export const locations: LocationPoint[] = [
   {
     id: "kupecheskiy-dom",
     name: "Купеческий дом (бывший)",
-    coords: [52.26715, 107.767265],
+    coords: [52.26715, 107.766999],
     type: "history",
     description:
       "Раньше здесь стоял еврейский купеческий дом. Дом перешёл к Орлову (бывш. дирекотр совхоза), потом дом перешел в колхоз. В здании сделали детский сад, который работал круглый год. Ясли (для самых маленьких) открывали только на лето. Сейчас в этом доме живёт глава Зырянска — Погорельский.",
@@ -666,14 +666,85 @@ export const locations: LocationPoint[] = [
     ],
     confidence: true,
   },
+  {
+    id: "kuznitsa",
+    name: "Кузница (бывшая)",
+    coords: [52.269929, 107.790031],
+    type: "history",
+    description:
+      "Здесь когда-то стояла кузница. В советское время в ней работал кузнец — ковал подковы для лошадей, чинил плуги, делал топоры и лопаты. Место гудело от молота и наковальни. Сейчас от кузницы ничего не осталось. Но старожилы помнят, как здесь звенел металл.",
+    images: [],
+    confidence: true,
+  },
+  {
+    id: "studencheskoe-obshchezhitie",
+    name: "Студенческое общежитие (бывшее)",
+    coords: [52.264889, 107.785593],
+    type: "history",
+    description:
+      "Здесь находилось студенческое общежитие. Было разделено на мужскую и женскую половины. При нём работал навес со столовой, где кормили студентов. Дети из города приезжали сюда на лето — работать в совхозе, помогать на полях и фермах.",
+    images: [],
+    confidence: true,
+  },
+  {
+    id: "konyushnya",
+    name: "Конюшня (бывшая)",
+    coords: [52.265643, 107.767993],
+    type: "history",
+    description:
+      "Здесь когда-то стояла конюшня. Держали лошадей — их было много. В совхозе без лошадей нельзя: пахать, возить сено, ездить в лес. Кони были рабочей силой. Сейчас от конюшни ничего нет.",
+    images: [],
+    confidence: true,
+  },
+  {
+    id: "rtm",
+    name: "Ремонтно-транспортные мастерские",
+    coords: [52.26571, 107.781584],
+    type: "history",
+    description:
+      "Ремонтно-транспортные мастерские. Здесь чинили тракторы, комбайны, грузовики. Работали сварщики, механики, токари. Всё, что ломалось в совхозе, везли сюда. Сейчас здание стоит заброшенное, но каркас ещё держится.",
+    images: [],
+    confidence: true,
+  },
+  {
+    id: "zernotok",
+    name: "Зерноток (бывший)",
+    coords: [52.262217, 107.783742],
+    type: "history",
+    description:
+      "Большая территория, где в совхозе перерабатывали зерно. Сюда свозили урожай с полей, сушили, чистили, сортировали. Работали зерносушилки, веялки, транспортеры. В сезон здесь гудели моторы и сыпалось зерно. Сейчас от зернотока осталась только большая площадка и техника — когда-то здесь кипела жизнь совхоза.",
+    images: [],
+    confidence: true,
+  },
+  {
+    id: "old-houses",
+    name: "Старые дома (исчезнувшая улица)",
+    coords: [52.264615, 107.759726],
+    type: "history",
+    description:
+      "Здесь когда-то стояли жилые дома. Теперь от них ничего не осталось — только пустое поле. Когда брат с дядей копали на этом месте, нашли длинный кабель, уходящий в землю, и остатки фундаментов. Видимо, здесь была целая улица, но время и люди стёрли её с лица земли.",
+    images: [],
+    confidence: true,
+  },
 
+  {
+    id: "teply-istochnik",
+    name: "Белое озеро (бывший)",
+    coords: [52.260537, 107.756201],
+    type: "nature",
+    description:
+      "Это место зовется белым озером. Когда строили трассу, брали грунт и случайно откопали тёплый источник. Он бил из земли — вода была тёплой, а еще я купался здесь в детстве. Место было укромным, почти никто не знал о нём. Теперь источник заилился и уже не бьёт, осталось только место, которое помнит, как я нырял в эту воду.",
+    images: [],
+    confidence: true,
+  },
   // =========== ПАНОРАМЫ ===============
   {
     id: "stf-panorama",
     name: "Панорама на СТФ",
     coords: [52.266198, 107.757872],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284412/stf_aqo4lw.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284412/stf_aqo4lw.jpg",
     confidence: true,
   },
 
@@ -682,7 +753,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на усадьбу",
     coords: [52.264089, 107.772999],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284417/ysadba_esvk3w.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284417/ysadba_esvk3w.jpg",
     confidence: true,
   },
   {
@@ -690,7 +762,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на кынгору",
     coords: [52.267257, 107.791966],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284421/kyngora-1_prfsqv.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284421/kyngora-1_prfsqv.jpg",
     confidence: true,
   },
   {
@@ -698,7 +771,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на кынгору",
     coords: [52.266523, 107.791271],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284388/kyngora-2_l0r5uy.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284388/kyngora-2_l0r5uy.jpg",
     confidence: true,
   },
   {
@@ -706,7 +780,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на мост",
     coords: [52.268387, 107.785819],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/most-2_nqcbp3.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/most-2_nqcbp3.jpg",
     confidence: true,
   },
   {
@@ -714,7 +789,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ",
     coords: [52.267513, 107.773699],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284426/mtf-1_glzjk1.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284426/mtf-1_glzjk1.jpg",
     confidence: true,
   },
   {
@@ -722,7 +798,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ",
     coords: [52.268623, 107.773875],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/mtf-2_h2knwt.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284394/mtf-2_h2knwt.jpg",
     confidence: true,
   },
   {
@@ -730,7 +807,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую улицу",
     coords: [52.267382, 107.782496],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284413/street-1_pu98r3.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284413/street-1_pu98r3.jpg",
     confidence: true,
   },
   {
@@ -738,7 +816,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую и Хмелева улицы",
     coords: [52.26609, 107.778214],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284434/street-2_ijzetb.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284434/street-2_ijzetb.jpg",
     confidence: true,
   },
   {
@@ -746,7 +825,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на Трактовую улицу",
     coords: [52.271886, 107.791599],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284397/rip_pdlguv.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284397/rip_pdlguv.jpg",
     confidence: true,
   },
   {
@@ -754,7 +834,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ. Утаты",
     coords: [52.279154, 107.779599],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-1_tzcfkc.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-1_tzcfkc.jpg",
     confidence: true,
   },
   {
@@ -762,7 +843,8 @@ export const locations: LocationPoint[] = [
     name: "Панорама на МТФ. Утаты",
     coords: [52.280976, 107.780555],
     type: "panorama",
-    panoramaSrc: "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-2_da0ba7.jpg",
+    panoramaSrc:
+      "https://res.cloudinary.com/xv01jkbw/image/upload/v1784284428/mtf-ytati-2_da0ba7.jpg",
     confidence: true,
   },
 ];
