@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -24,6 +24,10 @@ export const metadata = {
     "Село Зырянск",
     "Село Зырянск история",
   ],
+  verification: {
+    yandex: "06e4f2fb3b10719a",
+    google: "UTUYV47UoZeSSba1qc7PaJYiKIpIBy1SnbA6raqDUvo",
+  },
   openGraph: {
     title: "Зырянск: Карта Памяти",
     description: "Исчезающая история села глазами местного жителя.",
