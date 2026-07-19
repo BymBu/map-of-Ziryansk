@@ -8,7 +8,6 @@ import {
   ImageOverlay,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
 import { locations } from "../../../data/locations";
 import { useState } from "react";
 import AnimatedPopupContent from "./AnimatedPopupContent";
@@ -19,13 +18,14 @@ import IntroModal from "./IntroModal";
 import WelcomeNote from "./WelcomeNote";
 import { usePaperSound } from "../hooks/usePaperSound";
 import PanoramaModal from "./PanoramaModal";
-
+import ChangeLogModal from "./ChangeLogModal";
 
 export default function InteractiveMap() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(true); // для интро
 
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null); // Для попапа
   const [activeLocation, setActiveLocation] = useState<string | null>(null); // Для LocationDetails
+  const [activeLog, setActiveLog] = useState<boolean>(false); // Для Лога
 
   const [activePanorama, setActivePanorama] = useState<string | null>(null); // Для панорамы
 
@@ -36,13 +36,13 @@ export default function InteractiveMap() {
 
   return (
     <div className="relative w-full h-screen bg-gray-900">
-      <WelcomeNote setShowIntro={setShowIntro} />
+      <WelcomeNote setShowIntro={setShowIntro} setActiveLog={setActiveLog} />
       <IntroModal isVisible={showIntro} onClose={() => setShowIntro(false)} />
 
       <MapContainer
         center={[52.264682, 107.779104]}
         zoom={16}
-         style={{ height: "100%", width: "100%", willChange: "transform" }}
+        style={{ height: "100%", width: "100%", willChange: "transform" }}
         className="z-0"
         minZoom={15}
         maxZoom={18}
@@ -143,6 +143,9 @@ export default function InteractiveMap() {
           setMapMode={(mode) => setMapMode(mode as MapMode)}
         />
       </MapContainer>
+
+      {/* GUI Overlay - открывается ТОЛЬКО по клику */}
+      {activeLog && <ChangeLogModal onClose={() => setActiveLog(false)} />}
 
       {/* GUI Overlay - открывается ТОЛЬКО по клику */}
       {activeLocation && (

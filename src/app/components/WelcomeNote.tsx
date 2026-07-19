@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 export default function WelcomeNote({
   setShowIntro,
+  setActiveLog,
 }: {
   setShowIntro: (value: boolean | ((prev: boolean) => boolean)) => void;
+  setActiveLog: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <>
@@ -58,6 +60,12 @@ export default function WelcomeNote({
         >
           Показать приветствие заново
         </button>
+        <button
+          onClick={() => setActiveLog(true)}
+          className="mt-2 w-full h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-lg shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] transition-transform active:scale-95 font-serif text-base font-bold"
+        >
+          Показать лог обновлений
+        </button>
       </div>
 
       <motion.button
@@ -81,6 +89,34 @@ export default function WelcomeNote({
           <circle cx="12" cy="12" r="10" />
           <line x1="12" y1="16" x2="12" y2="12" />
           <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+      </motion.button>
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5 }}
+        onClick={() => setActiveLog(true)}
+        className="fixed top-18 md:hidden left-4 md:top-6 md:left-6 z-[1001] w-12 h-12 bg-[#e3d5b8] border-2 border-[#8b5a2b] rounded-full shadow-lg flex items-center justify-center text-[#5c3a1e] hover:bg-[#d4c5a9] active:scale-95 transition-colors backdrop-blur-sm"
+        aria-label="Показать список изменений"
+      >
+        {/* Иконка свитка (лог изменений) */}
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* Верхний валик свитка */}
+          <path d="M4 19.5v-15C4 3.5 5.5 3 7 3h10c1.5 0 3 .5 3 1.5v15c0 1-1.5 1.5-3 1.5H7c-1.5 0-3-.5-3-1.5z" />
+          <path d="M4 7h16" />
+          <path d="M4 12h16" />
+          <path d="M4 17h10" />
+          {/* Свисающая ленточка сбоку */}
+          <path d="M19 6v14c0 .5-.5 1-1 1h-1" />
         </svg>
       </motion.button>
     </>
