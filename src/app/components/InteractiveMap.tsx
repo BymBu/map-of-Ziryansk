@@ -82,7 +82,7 @@ export default function InteractiveMap() {
         )}
         {mapMode === "ziryansk" && (
           <ImageOverlay
-            url="https://res.cloudinary.com/xv01jkbw/image/upload/v1784283434/compressed_ziryansk_enfdx7.webp"
+            url="https://res.cloudinary.com/xv01jkbw/image/upload/v1784457927/ziryansk_csecollege_kzel5e.webp"
             bounds={[
               [52.241175, 107.707171],
               [52.283425, 107.85156],

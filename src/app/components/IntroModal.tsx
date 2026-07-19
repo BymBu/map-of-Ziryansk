@@ -480,7 +480,7 @@ export default function IntroModal({ isVisible, onClose }: IntroModalProps) {
                     <p className="leading-relaxed opacity-90 text-xs mb-4">
                       Хочу выразить благодарность в помощи создания
                       интерактивной карты моему брату Максиму,
-                      родственникам-старожилам, библиотеке и школе за
+                      старожилам, библиотеке, школе и заинтересованным людям за
                       предоставленные материалы.
                     </p>
                     <div className="space-y-1 font-mono text-xs text-[#5c3a1e]">
