@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f172a; 
+  --background: #0f172a;
   --foreground: #f8fafc;
-  --accent: #3b82f6; 
+  --accent: #3b82f6;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Geist Sans', Arial, Helvetica, sans-serif;
+  font-family: "Geist Sans", Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow: hidden; /* Запрещаем скролл страницы целиком */
+  touch-action: none; /* Отключаем стандартные жесты браузера */
+}
+
+
+/* Разрешаем только зум и перетаскивание внутри карты */
+.leaflet-container {
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Фикс для кнопок WelcomeNote на мобилках */
+button,
+.welcome-note-btn {
+  touch-action: manipulation; /* Убирает задержку клика и лишние жесты */
+  -webkit-tap-highlight-color: transparent; /* Убирает синюю подсветку при тапе */
 }
 
 /* Курсор - лупа */
 
 /* Глобальный курсор-лупа для всей карты */
 .leaflet-container {
-  cursor: url('/loupe-cursor.svg') 12 12, auto !important; 
+  cursor:
+    url("/loupe-cursor.svg") 12 12,
+    auto !important;
 }
 
 .leaflet-interactive {
-  cursor: url('/loupe-cursor.svg') 12 12, pointer !important;
+  cursor:
+    url("/loupe-cursor.svg") 12 12,
+    pointer !important;
 }
 
 /* --- СТИЛИЗАЦИЯ LEAFLET КАРТЫ --- */
@@ -36,8 +57,6 @@ body {
   display: none !important;
 }
 
-
-
 .invisible-marker {
   background: transparent !important;
   border: none !important;
@@ -47,35 +66,35 @@ body {
 /* Стили для кастомного попапа-свитка */
 .custom-scroll-popup .leaflet-popup-content-wrapper {
   position: relative;
-  background: #f4e4bc; 
-  background-image: 
+  background: #f4e4bc;
+  background-image:
     linear-gradient(to right, rgba(139, 90, 43, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(139, 90, 43, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px; 
+  background-size: 20px 20px;
   border: 2px solid #8b5a2b;
-  border-radius: 2px; 
-  box-shadow: 
+  border-radius: 2px;
+  box-shadow:
     0 10px 25px -5px rgba(0, 0, 0, 0.5),
-    inset 0 0 30px rgba(139, 90, 43, 0.2); 
+    inset 0 0 30px rgba(139, 90, 43, 0.2);
   color: #3e2723;
-  
+
   padding: 0;
   overflow: hidden;
   font-size: 1rem;
 }
 
 .custom-scroll-popup::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
-  right: -15px;  
+  right: -15px;
   width: 40px;
   height: 40px;
-  background-image: url('/loupe.svg');
+  background-image: url("/loupe.svg");
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 10;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 /* Убираем стандартный "хвостик" попапа и делаем свой */
@@ -83,12 +102,12 @@ body {
   background: #f4e4bc;
   border-left: 2px solid #8b5a2b;
   border-top: 2px solid #8b5a2b;
-  box-shadow: -5px 5px 10px rgba(0,0,0,0.2);
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Декоративная "печать" сверху */
 .custom-scroll-popup .leaflet-popup-content::before {
-  content: '';
+  content: "";
   display: block;
   height: 4px;
   background: repeating-linear-gradient(
@@ -107,7 +126,7 @@ body {
 }
 
 .custom-scroll-popup h3 {
-  font-family: 'Marck Script', cursive; /* Другой рукописный для заголовков */
+  font-family: "Marck Script", cursive; /* Другой рукописный для заголовков */
   font-size: 2rem;
   border-bottom: 1px dashed #8b5a2b;
   padding-bottom: 5px;
@@ -115,25 +134,24 @@ body {
   color: #5c3a1e;
 }
 
-
 /* Псевдоэлемент для детальной локации */
 .locationDetail::before {
-  content: '';
+  content: "";
   position: absolute;
-  
-  width: 40px; 
+
+  width: 40px;
   height: 40px;
-  
+
   /* ПОЗИЦИОНИРОВАНИЕ */
   bottom: -2px; /* Отступ снизу */
-  right: 0px;  /* Отступ справа */
-  
+  right: 0px; /* Отступ справа */
+
   /* ИЗОБРАЖЕНИЕ */
-  background-image: url('/feather.svg');
+  background-image: url("/feather.svg");
   background-size: contain; /* Чтобы иконка вписалась в 24x24 */
   background-repeat: no-repeat;
   background-position: center;
-  
+
   /* ПРОПУСКАЕМ КЛИКИ ЧЕРЕЗ НЕГО */
   pointer-events: none;
   z-index: 50;
@@ -161,7 +179,7 @@ body {
 
 /* Иконка внутри хотспота (SVG через CSS) */
 .custom-hotspot::after {
-  content: '';
+  content: "";
   width: 16px;
   height: 16px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4e4bc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19l7-7 3 3-7 7-3-3z'/%3E%3Cpath d='M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z'/%3E%3Cpath d='M2 2l7.586 7.586'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E");
@@ -190,7 +208,8 @@ body {
   backdrop-filter: blur(4px) !important;
 }
 
-.pnlm-zoom-in, .pnlm-zoom-out {
+.pnlm-zoom-in,
+.pnlm-zoom-out {
   width: 36px !important;
   height: 36px !important;
   background: transparent !important;
@@ -201,7 +220,8 @@ body {
   transition: all 0.2s !important;
 }
 
-.pnlm-zoom-in:hover, .pnlm-zoom-out:hover {
+.pnlm-zoom-in:hover,
+.pnlm-zoom-out:hover {
   background: #8b5a2b !important;
   color: #f4e4bc !important;
 }
