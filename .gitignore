@@ -42,3 +42,6 @@ next-env.d.ts
 
 /public/photos/*.JPG
 /public/panoramas/*.JPG
+
+.env.local
+.env.*.local
