@@ -20,13 +20,12 @@ export default function ViewCounter() {
         });
 
         const result = await counter.up("first-counter-5092");
-        
-        // Типизация: у result есть поле data, внутри которого value
-        if (mounted && result?.data?.value !== undefined) {
-          setCount(result.data.value + 600);
+
+        // Реальная структура: data.up_count
+        if (mounted && result?.data?.up_count !== undefined) {
+          setCount(result.data.up_count + 630); // это число просмотров из v1 апи версии, некий костыль =)
         }
       } catch (err) {
-        // Без 'any' — используем unknown и проверяем
         const message = err instanceof Error ? err.message : "Unknown error";
         console.warn("Counter error:", message);
         if (mounted) setError(true);
@@ -43,9 +42,7 @@ export default function ViewCounter() {
   if (error || count === null) {
     return (
       <div className="flex items-center gap-2 px-3 py-2 border border-dashed border-[#8b5a2b]/30 rounded bg-[#f4e4bc]/50">
-        <span className="text-[10px] uppercase tracking-widest text-[#8b5a2b]/50 font-serif">
-          {/* Пусто */}
-        </span>
+        <span className="text-[10px] uppercase tracking-widest text-[#8b5a2b]/50 font-serif" />
       </div>
     );
   }
