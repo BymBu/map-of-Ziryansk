@@ -9,18 +9,9 @@ export default function ViewCounter() {
   useEffect(() => {
     let mounted = true;
 
-    fetch("https://hits.dwyl.com/BymBu/map-of-Ziryansk.json")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        setCount((data.message ?? 0) + 630); // магическое число прошлых просмотров с CounterApi
-      })
-      .catch((err) => {
-        console.warn("Counter unavailable:", err.message);
-        if (mounted) setError(true);
-      });
+   fetch('/api/counter')
+  .then(res => res.json())
+  .then(data => setCount(data.count + 600))
 
     return () => {
       mounted = false;
